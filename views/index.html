@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	
+	<!-- Favicon -->
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+
+	<!-- Title -->
+	<title>Team Tow</title>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<!-- Link to Custom CSS -->
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+	<nav class="navbar navbar-default navbar-fixed-top">
+	<div id="minijumbohead">
+	    {{!-- container for spacing --}}
+	    <div class="container">
+	        {{!-- everything in the header is a row --}}
+	        <div class="row">
+
+	            {{!-- logo block--}}
+	            <div class="col-xs-5">
+	                <h1>room<span class="bracket">[</span>ease<span class="bracket">]</span></h1>
+	            </div>
+
+	            {{!-- blank column for nicer headerspacing--}}
+	            <div class="col-xs-1">
+	            </div>
+
+	            {{!-- login block --}}
+	            <div class="col-xs-4">
+	                {{!-- replace stephanie with {{name}} --}}
+	                {{!-- <h3 id="welcome">hi Stephanie</h3> --}}
+
+
+	                {{#if logged_in}}
+	                <p class="welcome"><a href="/users/sign-out">Sign Out</a></p>
+	                <h5 class="welcome">{{firstname}}</h5>
+	                <button class="btn btn-primary btn-lg btn-block hideBar"class="button hideBar" id="hideBar">Update</button>
+	                {{/if}}
+
+	            </div>
+
+	            <div class="col-xs-2">
+	                {{!-- current user pic goes here --}}
+	                <a href="https://desolate-bastion-91097.herokuapp.com/"><img id="userpic" src="http://emojipedia-us.s3.amazonaws.com/cache/e3/ab/e3ab863e82cda24ea3158bebce132413.png"></a>
+	            </div>    
+	        </div>
+	    </div>
+	</div>
+	</nav>
+
+{{!-- page contents in a container--}}
+<div class="container" id="conbody">
+<h1 class="header1text">Results</h1>
+
+    {{!-- dummy data sample results block--}}
+    {{!-- will want to use handlebars each to get top 10 or so results --}}
+    <div class="results">
+
+    {{#each matchdata}}
+        <div class="row match">
+            {{!-- div stores compatibility rating --}}
+            <div class="compatrate">
+                <h3>{{this.compat}}%</h3>
+            </div>
+            
+            {{!-- div holds profile picture --}}
+            <div class="col-xs-3">
+                <img class="profpic" src={{this.friendData.photoLink}}>
+            </div>
+
+            {{!-- div for main info: name, bio, whatever other stuff we want to show --}}
+            <div class="col-xs-9">
+                <h4>Name: {{this.friendData.name}}</h4>
+                <p>Email: {{this.friendData.email}}
+                <p>Zip code: {{this.friendData.zip}}</p>
+                <p>Bio: {{this.friendData.bio}}</p>
+                <form id="contact-form" method='post', action='results/send/'>
+                      <input type="name" id="name" name="name" value="{{this.friendData.name}}" style="display: none;">
+                      <input type="email" id="email" name="email" value="{{this.friendData.email}}" style="display: none;">
+                      <label for="message">Let's send {{this.friendData.name}} a message</label>
+                      <br>
+                      <textarea id="message" name="message" required="required" style="width: 50%;float:left;"></textarea>
+                  <input type="submit" style="float:left;margin-top: 2.4%;">
+                 </form>
+            </div>
+
+        </div>
+    {{/each}}
+</div>
+
+{{!-- <form class="create-update-form" action="info/update/{{user_id}}?_method=PUT" method="POST"> --}}
+
+<div class="fliter-modal" id="flitermodal" style="display: none;">
+    <div class="fliter-modal-content">
+          <div class="closeb"></div>
+          <span class="fliter-modal-close"> × </span>
+
+<form class="create-update-form" action="results/update/{{user_id}}?_method=PUT" method="POST">
+    <h2>Roommate Compatibility</h2>
+
+
+        <h3><strong>Smoking</strong></h3>
+        
+            <h4>Do you smoke?</h4>
+                <select class="chosen-select" id="smoke_user" name="smoke_user" required>
+                    <option  name="smoke_user" value=""></option>
+                    <option  name="smoke_user" value="1">Yes</option>
+                    <option name="smoke_user" value="0">No</option>
+                </select>
+
+           <h4>Would you like a roommate who smokes?</h4>
+                <select data-placeholder="" class="chosen-select" id="smoke_roommate" name="smoke_roommate" required>
+                    <option value=""></option>
+                        <option name="smoke_roommate" value="yes">Yes</option>
+                        <option name="smoke_roommate" value="no">No</option>
+                        <option name="smoke_roommate" value="dc">Don't care</option>
+                </select>
+
+    
+        <h3><strong>Schedule</strong></h3>
+            
+            <h4>Do you stay up late or get up early?</h4>
+                <select data-placeholder="" class="chosen-select" id="schedule_user" name="schedule_user" required>
+                    <option value=""></option>
+                    <option name="schedule_user" value="1">Get up early</option>
+                    <option name="schedule_user" value="0">Stay up late</option>
+                </select>
+            
+            <h4>Do you prefer your roommate to stay up late or get up early?</h4>
+                <select data-placeholder="" class="chosen-select" id="schedule_roommate" name="schedule_roommate" required>
+                    <option value=""></option>
+                    <option name="schedule_roommate" value="yes">Get up early</option>
+                    <option name="schedule_roommate" value="no">Stay up late</option>
+                    <option name="schedule_roommate" value="dc">Don't care</option>
+              </select> 
+
+
+        <h3><strong>Personality</strong></h3>
+            
+            <h4>Are you introverted or extroverted?</h4>
+                <select data-placeholder="" class="chosen-select" id="personality_user" name="personality_user" required>
+                    <option value=""></option>
+                    <option name="personality_user" value="1">Introverted</option>
+                    <option name="personality_user" value="0">Extroverted</option>
+                </select>
+            
+            <h4>Do you prefer a roommate who is introverted or extroverted?</h4>
+                <select data-placeholder="" class="chosen-select" id="personality_roommate" name="personality_roommate" required>
+                    <option value=""></option>
+                    <option name="personality_roommate" value="yes">Introverted</option>
+                    <option name="personality_roommate" value="no">Extroverted</option>
+                    <option name="personality_roommate" value="dc">Don't care</option>
+                </select>
+
+
+        <h3><strong>Parties</strong></h3>
+            
+            <h4>Do you host parties at home?</h4>
+                <select data-placeholder="" class="chosen-select" id="parties_user" name="parties_user" required>
+                    <option name="parties_user" value=""></option>
+                    <option name="parties_user" value="1">Yes</option>
+                    <option name="parties_user" value="0">No</option>
+                </select>
+            
+            <h4>Would you like a roommate who hosts parties at home?</h4>
+                <select data-placeholder="" class="chosen-select" id="parties_roommate" name="parties_roommate" required>
+                    <option value=""></option>
+                    <option name="parties_roommate" value="yes">Yes</option>
+                    <option name="parties_roommate" value="no">No</option>
+                    <option name="parties_roommate" value="dc">Don't care</option>
+                </select>
+
+
+        <h3><strong>Friends</strong></h3>
+            
+            <h4>How often do you have friends over?</h4>
+                <select data-placeholder="" class="chosen-select" id="friends_user" name="friends_user" required>
+                    <option value=""></option>
+                    <option name="friends_user" value="1">Occasionally</option>
+                    <option name="friends_user" value="0">Often</option>
+                </select>
+          
+            <h4>How often would you like your roommate to have friends over?</h4>
+                <select data-placeholder="" class="chosen-select" id="friends_roommate" name="friends_roommate" required>
+                    <option value=""></option>
+                    <option name="friends_roommate" value="yes">Occasionally</option>
+                    <option name="friends_roommate" value="no">Often</option>
+                    <option name="friends_roommate" value="dc">Don't care</option>
+                </select>
+
+
+        <h3><strong>Pets</strong></h3>
+
+            <h4>Do you have pets?</h4>
+                <select data-placeholder="" class="chosen-select" id="pets_user" name="pets_user" required>
+                    <option value=""></option>
+                    <option name="pets_user" value="1">Yes</option>
+                    <option name="pets_user" value="0">No</option>
+                </select>
+
+            <h4>Would you like your roommate to have pets?</h4>
+                <select data-placeholder="" class="chosen-select" id="pets_roommate" name="pets_roommate" required>
+                    <option value=""></option>
+                    <option name="pets_roommate" value="yes">Yes</option>
+                    <option name="pets_roommate" value="no">No</option>
+                    <option name="pets_roommate" value="dc">Don't care</option>
+                </select>
+
+
+        <h3><strong>Cleanliness</strong></h3>
+            
+            <h4>Are you neat or messy?</h4>
+                <select data-placeholder="" class="chosen-select" id="cleanliness_user" name="cleanliness_user" required>
+                    <option value=""></option>
+                    <option name="cleanliness_user" value="1">Neat</option>
+                    <option name="cleanliness_user" value="0">Messy</option>
+                </select>
+            
+            <h4>Would you prefer your roommate to be neat or messy?</h4>
+                <select data-placeholder="" class="chosen-select" id="cleanliness_roommate" name="cleanliness_roommate" required>
+                    <option value=""></option>
+                    <option name="cleanliness_roommate" value="yes">Neat</option>
+                    <option name="cleanliness_roommate" value="no">Messy</option>
+                    <option name="cleanliness_roommate" value="dc">Don't care</option>
+                </select>
+
+
+        <h3><strong>Music</strong></h3>
+            
+            <h4>Do you like to listen to music?</h4>
+                <select data-placeholder="" class="chosen-select" id="music_user" name="music_user" required>
+                    <option value=""></option>
+                    <option  name="music_user" value="1">Yes</option>
+                    <option  name="music_user" value="0">No</option>
+                </select>
+            
+            <h4>Would you like a roommate who listens to music?</h4>
+                <select data-placeholder="" class="chosen-select" id="music_roommate" name="music_roommate" required>
+                    <option value=""></option>
+                    <option name="music_roommate" value="yes">Yes</option>
+                    <option name="music_roommate" value="no">No</option>
+                    <option name="music_roommate" value="dc">Don't care</option>
+                </select>
+
+        <br>
+
+        <h2>Upload your picture</h2>
+        <input type="url" name="imageicon_user"placeholder="URL Link" required>
+        <br>
+        <h2>Bio</h2>
+        <input type="text" name="bio_user"placeholder="HI,I am a second year undergraduate student at UCLA" required>
+        <br>
+        <h2>What's your zipcode?</h2>
+        <input type="number" name="zipcode_user"placeholder="91000" required>
+        <br>
+        <br>
+
+        <div class="fliter-button">
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
+        </div>
+            </form>
+        </div> 
+    </div>
+
+<script>
+
+var flitermodal =  document.getElementById('flitermodal');
+var closebtn =  document.getElementsByClassName('fliter-modal-close')[0];
+var openbtn =  document.getElementById('hideBar');
+var flitercontent =  document.getElementsByClassName('fliter-modal-content');
+
+
+openbtn.onclick = function(){
+    if (flitermodal.style.display = "none"){
+            flitermodal.style.display = "block"
+        }else{
+            console.log("Fliter Modal is not none")
+        }
+}
+
+closebtn.onclick = function(){
+    if(flitermodal.style.display="block"){
+        flitermodal.style.display="none"
+    }else{
+        console.log('somethings wrong');
+    }
+}
+
+window.onclick = function(event) {
+    if (event.target == flitermodal) {
+        flitermodal.style.display = "none";
+    }
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div> <!-- /Container -->
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+</body>
+</html>
