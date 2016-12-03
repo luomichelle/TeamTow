@@ -3,8 +3,8 @@
 - Clone or fork this repo
 - Install NodeJS and MongoDB
 - Run `sudo npm install`
-- run `mongoimport --db myUberApp --collection truckData --drop --file ./truck.json` to import sample truck information in MongoDB
-- run `mongoimport --db myUberApp --collection clientData --drop --file ./client-data.json` to import sample clients information in MongoDB
+- run `mongoimport --db teamtow --collection truckData --drop --file ./truck.json` to import sample truck information in MongoDB
+- run `mongoimport --db teamtow --collection clientData --drop --file ./client-data.json` to import sample clients information in MongoDB
 
 ### How to run: 
 
