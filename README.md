@@ -21,3 +21,6 @@
 [05](http://localhost:8000/truck.html?userId=05), 
 [06](http://localhost:8000/truck.html?userId=06), 
 [07](http://localhost:8000/truck.html?userId=07)
+
+http://localhost:8000/truck.html?userId=02
+http://localhost:8000/client.html?clientId=02
