@@ -1,0 +1,46 @@
+body {
+	margin: 0;
+}
+
+.container {
+	margin: 0;
+	width: 100%;
+	border: none;
+	padding: 0;
+}
+
+header {
+	background-color: black;
+	color: silver;
+	border-bottom-style: solid;
+	border-bottom: 25px;
+	border-bottom-color: red;
+	padding: 10px;
+}
+
+.container-fluid {
+	margin: 0;
+	width: 100%;
+	border: none;
+	padding: 0;
+}
+
+.wallpaper {
+	background-image: url(stranded-car.jpg);
+	background-repeat: no-repeat;
+	background-position: right top;
+	background-attachment: scroll;
+	width: 100%;
+	/*margin: 87px 0 0 0;*/
+	border: none;
+	height: 800px;
+}
+
+footer {
+	height: 50px;
+	background-color: black;
+	color: silver;
+	padding: 25px;
+	text-align: center;
+	line-height: 50px;
+}
