@@ -1,3 +1,9 @@
+use command 'webpack -w' if you have updated anything in HTML/CSS.
+
+
+
+
+
 ### How to install:
 
 - Clone or fork this repo
