@@ -1,0 +1,115 @@
+<form>
+<div class="jumbotron" id="jumbohead">
+  <div class="container">
+    <div class="row">
+    
+
+    {{!-- logo block--}}
+    <div class="col-md-5">
+        <h1>room<span class="bracket">[</span>ease<span class="bracket">]</span></h1>
+    </div>
+    
+    {{!-- blank column for spacing--}}
+    <div class="col-md-3">
+    </div>
+
+    {{!-- login block --}}
+    <div class="col-md-4">
+    <form class="form-horizontal" id="signInForm" action="/users/login" method="POST">
+        <div class="form-group">
+        <label for="oldEmail" class="col-sm-3 control-label">Email</label>
+        <div class="col-sm-6">
+            <input type="email" class="form-control" id="oldEmail" name="email" placeholder="joebruin@ucla.edu">
+        </div>
+        </div>
+        <div class="form-group">
+            <label for="oldPassword" class="col-sm-3 control-label">Password</label>
+        <div class="col-sm-6">
+            <input type="password" class="form-control" id="oldPassword" name="password" placeholder="********">
+        </div>
+        <div class="col-sm-3">
+            <button type="submit" class="btn btn-default" id="signInButton">Log in</button>
+        </div>
+        </div>
+    </form>
+    </div>    
+    </div>
+</div>
+</div>
+
+<div class="container">
+
+  <div class="row">
+  
+  {{!-- about --}}
+  <div class="col-md-7">
+    <h2>Connecting you with compatible roommates to make the rest easy.</h2>
+    
+    <div class="row aboutRow">
+      <div class="col-sm-2">
+        <img class="reIcon" src="https://cdn0.iconfinder.com/data/icons/pixon-1/24/filter_list_order_sequence_sort_sorting-512.png"/>
+      </div>
+      <div class="col-sm-10 textCol">
+        <h3 class="description">Tell us about yourself </h3>
+        <p class="description"> and exactly what you want in a roommate by filling out a quick survey. Then let room[ease] work its magic to find your most compatible matches.</span></p>
+      </div>
+    </div>
+
+    <div class="row aboutRow">
+      <div class="col-sm-2">
+        <img class="reIcon" src="https://cdn3.iconfinder.com/data/icons/users/100/connect_user-512.png"/>
+      </div>
+      <div class="col-sm-10 textCol">
+        <h3 class="description">Contact top roommates </h3>
+        <p class="description"> that have already been sorted by the room[ease] algorithm to maximize compatibility based on your shared preferences.</span></p>
+      </div>
+    </div>
+
+    <div class="row aboutRow">
+      <div class="col-sm-2">
+        <img class="reIcon" src="http://plainicon.com/dboard/userprod/2805_fce53/prod_thumb/plainicon.com-50382-512px-5d4.png"/>
+      </div>
+      <div class="col-sm-10 textCol">
+        <h3 class="description">Rest easy </h3>
+        <p class="description"> knowing that your personal information is always safe and secure.</span></p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-sm-1">
+  </div>
+
+  {{!-- sign up --}}
+  <div class="col-md-4" id="signupblock">
+  <h1>Sign Up</h1>
+  <form id="signUpForm" action="/users/create" method="POST">
+    <div class="form-group">
+
+    <br>
+    <div class="form-group"><br>
+      <label class="sr-only" for="emailAddress">Email Address</label>
+      <input type="text" class="form-control" id="emailAddress" name="email" placeholder="Email Address">
+    </div>
+
+    <div class="form-group">
+      <label class="sr-only" for="userName">New First Name</label>
+      <input type="text" class="form-control" id="userName" name="firstname" placeholder="First Name">
+    </div>
+
+    <div class="form-group">
+      <label class="sr-only" for="newPass">New Password</label>
+      <input type="text" class="form-control" id="newPass" name="password" placeholder="New Password">
+    </div>
+
+    <div>
+      <button type="submit" class="btn btn-default" id="signUpButton">Sign Up</button>
+    </div>
+
+  </form>
+
+  </div>
+  </div>
+
+</div>
+</form>

@@ -1,0 +1,438 @@
+{{#unless logged_in}}
+<div class="jumbotron" id="jumbohead">
+    <div class="container">
+        <div class="row">
+    
+        {{!-- logo block--}}
+        <div class="col-md-5">
+            <h1>room<span class="bracket">[</span>ease<span class="bracket">]</span></h1>
+        </div>
+    
+        {{!-- blank column for spacing--}}
+        <div class="col-md-3">
+        </div>
+
+        {{!-- login block --}}
+        <div class="col-md-4">
+            <form class="form-horizontal" id="signInForm" action="/users/login" method="POST">
+                <div class="form-group">
+                    <label for="oldEmail" class="col-sm-3 control-label">Email</label>
+                    <div class="col-sm-6">
+                        <input type="email" class="form-control" id="oldEmail" name="email" placeholder="joebruin@ucla.edu" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="oldPassword" class="col-sm-3 control-label">Password</label>
+                    <div class="col-sm-6">
+                        <input type="password" class="form-control" id="oldPassword" name="password" placeholder="********" required>
+                    </div>
+                    <div class="col-sm-3">
+                      <button type="submit" class="btn btn-default" id="signInButton">Log in</button>
+                    </div>
+                </div>
+            </form>
+        </div>    
+    </div>
+</div>
+</div>
+
+<div class="container">
+
+  <div class="row">
+  
+  {{!-- about --}}
+  <div class="col-md-7">
+    <h2>Connecting you with compatible roommates to make the rest easy.</h2>
+    
+    <div class="row aboutRow">
+      <div class="col-sm-2">
+        <img class="reIcon" src="https://cdn0.iconfinder.com/data/icons/pixon-1/24/filter_list_order_sequence_sort_sorting-512.png"/>
+      </div>
+      <div class="col-sm-10 textCol">
+        <h3 class="description">Tell us about yourself </h3>
+        <p class="description"> and exactly what you want in a roommate by filling out a quick survey. Then let room[ease] work its magic to find your most compatible matches.</span></p>
+      </div>
+    </div>
+
+    <div class="row aboutRow">
+      <div class="col-sm-2">
+        <img class="reIcon" src="https://cdn3.iconfinder.com/data/icons/users/100/connect_user-512.png"/>
+      </div>
+      <div class="col-sm-10 textCol">
+        <h3 class="description">Contact top roommates </h3>
+        <p class="description"> that have already been sorted by the room[ease] algorithm to maximize compatibility based on your shared preferences.</span></p>
+      </div>
+    </div>
+
+    <div class="row aboutRow">
+      <div class="col-sm-2">
+        <img class="reIcon" src="http://plainicon.com/dboard/userprod/2805_fce53/prod_thumb/plainicon.com-50382-512px-5d4.png"/>
+      </div>
+      <div class="col-sm-10 textCol">
+        <h3 class="description">Rest easy </h3>
+        <p class="description"> knowing that your personal information is always safe and secure.</span></p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-sm-1">
+  </div>
+
+  {{!-- sign up --}}
+  <div class="col-md-4" id="signupblock">
+  <h1>Sign Up</h1>
+  <form id="signUpForm" action="/users/create" method="POST">
+    <div class="form-group">
+
+    <br>
+    <div class="form-group"><br>
+      <label class="sr-only" for="emailAddress">Email Address</label>
+      <input type="email" class="form-control" id="emailAddress" name="email" placeholder="Email Address" required>
+    </div>
+
+    <div class="form-group">
+      <label class="sr-only" for="userName">New First Name</label>
+      <input type="text" class="form-control" id="userName" name="firstname" placeholder="First Name" required>
+    </div>
+
+    <div class="form-group">
+      <label class="sr-only" for="newPass">New Password</label>
+      <input type="password" class="form-control" id="newPass" name="password" placeholder="New Password" required>
+    </div>
+
+    <div>
+      <button type="submit" class="btn btn-default" id="signUpButton">Sign Up</button>
+    </div>
+
+  </form>
+
+  </div>
+  </div>
+
+</div>
+
+
+
+{{/unless}}
+
+{{#if logged_in}}
+
+{{!-- header bar --}}
+<nav class="navbar navbar-default navbar-fixed-top">
+<div id="minijumbohead">
+    {{!-- container for spacing --}}
+    <div class="container">
+        {{!-- everything in the header is a row --}}
+        <div class="row">
+
+            {{!-- logo block--}}
+            <div class="col-xs-5">
+                <h1>room<span class="bracket">[</span>ease<span class="bracket">]</span></h1>
+            </div>
+
+            {{!-- blank column for nicer headerspacing--}}
+            <div class="col-xs-1">
+            </div>
+
+            {{!-- login block --}}
+            <div class="col-xs-4">
+                {{!-- replace stephanie with {{name}} --}}
+                {{!-- <h3 id="welcome">hi Stephanie</h3> --}}
+
+                <h5 class="welcome">{{firstname}}</h5>
+                <p class="welcome"><a href="/users/sign-out">Sign Out</a></p>
+
+            </div>
+
+            <div class="col-xs-2">
+                {{!-- current user pic goes here --}}
+                <a href="http://roomease-chat.herokuapp.com"><img id="userpic" src="http://emojipedia-us.s3.amazonaws.com/cache/e3/ab/e3ab863e82cda24ea3158bebce132413.png"></a>
+            </div>    
+        </div>
+    </div>
+</div>
+</nav>
+  
+
+
+<div class="container" id="compatsurvey">
+  {{!-- <form action="/create" method="POST"> --}}
+
+ <form class="create-update-form" action="index/create" method="POST">
+    <div class="row" id="toprow">
+      <div class="col-md-7">
+        <h1 style="text-align: left">com<span class="bracket">·</span>pat<span class="bracket">·</span>i<span class="bracket">·</span>bil<span class="bracket">·</span>i<span class="bracket">·</span>ty</h1>
+        <hr>
+        <h4>a state in which two things are able to exist or occur together without problems or conflict</h4>
+        <ul>
+          <li><h4>synonyms: like-mindedness, similarity, affinity, closeness, fellow feeling, harmony, rapport, empathy, sympathy</h4></li>
+        </ul>
+
+        <br>
+        <h3>Fill out your preferences as honestly as possible to help us match you to your most compatible roommates.</h3>
+      </div>
+      <div class="col-md-5">
+        <div id="aboutbox">
+          <h2>My Profile*</h2>
+          <h5>Zipcode</h5>
+          <input type="number" name="zipcode_user"placeholder="91000" style="display:table-cell; width:100%" required>
+
+          <h5>Profile Picture</h5>
+          <input type="url" name="imageicon_user"placeholder="URL Link" style="display:table-cell; width:100%" required>
+          
+          <h5>Quick Bio</h5>
+          <textarea name="bio_user"placeholder="Four score and seven years ago..." style="display:table-cell; width:100%" required></textarea>
+          <p>*Matches will be able to see this information.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sectionBlock">
+      <div class="row">
+      
+      <div class="col-md-3">
+        <h1><strong>Personality</strong></h1>
+      </div>
+
+      <div class="col-md-6">
+          <h4>Are you introverted or extroverted?</h4>
+              <select data-placeholder="" class="chosen-select" id="personality_user" name="personality_user" required>
+                  <option value=""></option>
+                      <option name="personality_user" value="1">Introverted</option>
+                      <option name="personality_user" value="0">Extroverted</option>
+              </select>
+          <h4>Do you prefer a roommate who is introverted or extroverted?</h4>
+              <select data-placeholder="" class="chosen-select" id="personality_roommate" name="personality_roommate" required>
+                  <option value=""></option>
+                      <option name="personality_roommate" value="yes">Introverted</option>
+                      <option name="personality_roommate" value="no">Extroverted</option>
+                      <option name="personality_roommate" value="dc">Don't care</option>
+              </select>
+      </div>
+
+      <div class="col-xs-3">
+        <div class="index-prop-img"><img src="http://emojipedia-us.s3.amazonaws.com/cache/a0/b0/a0b0ff4a57fd2cf8281ed123e11fadcc.png"></div>
+      </div>
+
+      </div>
+    </div>
+
+    <div class="sectionBlock">
+      <div class="row">
+      
+      <div class="col-md-3">
+        <h1><strong>Cleanliness</strong></h1>
+      </div>
+
+      <div class="col-md-6">
+          <h4>Are you neat or messy?</h4>
+              <select data-placeholder="" class="chosen-select" id="cleanliness_user" name="cleanliness_user" required>
+                      <option value=""></option>
+                      <option name="cleanliness_user" value="1">Neat</option>
+                      <option name="cleanliness_user" value="0">Messy</option>
+              </select>
+          <h4>Would you prefer your roommate to be neat or messy?</h4>
+              <select data-placeholder="" class="chosen-select" id="cleanliness_roommate" name="cleanliness_roommate" required>
+                  <option value=""></option>
+                      <option name="cleanliness_roommate" value="yes">Neat</option>
+                      <option name="cleanliness_roommate" value="no">Messy</option>
+                      <option name="cleanliness_roommate" value="dc">Don't care</option>
+              </select>
+      </div>
+
+      <div class="col-xs-3">
+        <div class="index-prop-img"><img src="http://emojipedia-us.s3.amazonaws.com/cache/44/b5/44b560c341a126b677f6033a6aaa0741.png"></div>
+      </div>
+
+      </div>
+    </div>
+
+    <div class="sectionBlock">
+      <div class="row">
+      
+      <div class="col-md-3">
+        <h1><strong>Schedule</strong></h1>
+      </div>
+
+      <div class="col-md-6">
+          <h4>Do you stay up late or get up early?</h4>
+              <select data-placeholder="" class="chosen-select" id="schedule_user" name="schedule_user" required>
+                      <option value=""></option>
+                      <option name="schedule_user" value="1">Get up early</option>
+                      <option name="schedule_user" value="0">Stay up late</option>
+              </select>
+          <h4>Do you prefer your roommate to stay up late or get up early?</h4>
+              <select data-placeholder="" class="chosen-select" id="schedule_roommate" name="schedule_roommate" required>
+                <option value=""></option>
+                      <option name="schedule_roommate" value="yes">Get up early</option>
+                      <option name="schedule_roommate" value="no">Stay up late</option>
+                      <option name="schedule_roommate" value="dc">Don't care</option>
+              </select>
+      </div>
+
+      <div class="col-xs-3">
+        <div class="index-prop-img"><img src="http://emojipedia-us.s3.amazonaws.com/cache/1e/98/1e9822e9cd8be97115c1257bca04599d.png"></div>
+      </div>
+
+      </div>
+    </div>
+
+    <div class="sectionBlock">
+      <div class="row">
+      
+      <div class="col-md-3">
+        <h1><strong>Music</strong></h1>
+      </div>
+
+      <div class="col-md-6">
+          <h4>Do you like to listen to music?</h4>
+              <select data-placeholder="" class="chosen-select" id="music_user" name="music_user" required>
+                  <option value=""></option>
+                      <option  name="music_user" value="1">Yes</option>
+                      <option  name="music_user" value="0">No</option>
+              </select>
+          <h4>Would you like a roommate who listens to music?</h4>
+              <select data-placeholder="" class="chosen-select" id="music_roommate" name="music_roommate" required>
+                  <option value=""></option>
+                      <option name="music_roommate" value="yes">Yes</option>
+                      <option name="music_roommate" value="no">No</option>
+                      <option name="music_roommate" value="dc">Don't care</option>
+              </select>
+      </div>
+
+      <div class="col-xs-3">
+        <div class="index-prop-img"><img src="http://emojipedia-us.s3.amazonaws.com/cache/34/31/343116d9724cca88bb3c1ee727d87d3e.png"></div>
+      </div>
+
+      </div>
+    </div>
+
+    <div class="sectionBlock">
+      <div class="row">
+      
+      <div class="col-md-3">
+        <h1><strong>Parties</strong></h1>
+      </div>
+
+      <div class="col-md-6">
+          <h4>Do you host parties at home?</h4>
+              <select data-placeholder="" class="chosen-select" id="parties_user" name="parties_user" required>
+                      <option name="parties_user" value=""></option>
+                      <option name="parties_user" value="1">Yes</option>
+                      <option name="parties_user" value="0">No</option>
+              </select>
+          <h4>Would you like a roommate who hosts parties at home?</h4>
+              <select data-placeholder="" class="chosen-select" id="parties_roommate" name="parties_roommate" required>
+                      <option value=""></option>
+                      <option name="parties_roommate" value="yes">Yes</option>
+                      <option name="parties_roommate" value="no">No</option>
+                      <option name="parties_roommate" value="dc">Don't care</option>
+              </select>
+      </div>
+
+      <div class="col-xs-3">
+        <div class="index-prop-img"><img src="http://emojipedia-us.s3.amazonaws.com/cache/65/e7/65e7459b4abb9fb23a5b31c54dda4089.png"></div>
+      </div>
+
+      </div>
+    </div>
+
+    <div class="sectionBlock">
+      <div class="row">
+      
+      <div class="col-md-3">
+        <h1><strong>Friends</strong></h1>
+      </div>
+
+      <div class="col-md-6">
+          <h4>How often do you have friends over?</h4>
+              <select data-placeholder="" class="chosen-select" id="friends_user" name="friends_user" required>
+                      <option value=""></option>
+                      <option name="friends_user" value="1">Occasionally</option>
+                      <option name="friends_user" value="0">Often</option>
+              </select>
+          <h4>How often would you like your roommate to have friends over?</h4>
+              <select data-placeholder="" class="chosen-select" id="friends_roommate" name="friends_roommate" required>
+                  <option value=""></option>
+                      <option name="friends_roommate" value="yes">Occasionally</option>
+                      <option name="friends_roommate" value="no">Often</option>
+                      <option name="friends_roommate" value="dc">Don't care</option>
+              </select>
+      </div>
+
+      <div class="col-xs-3">
+        <div class="index-prop-img"><img src="http://emojipedia-us.s3.amazonaws.com/cache/f8/9b/f89b8b1ed61cb8c494c37bade12cf15f.png"></div>
+      </div>
+
+      </div>
+    </div>
+
+    <div class="sectionBlock">
+      <div class="row">
+      
+      <div class="col-md-3">
+        <h1><strong>Pets</strong></h1>
+      </div>
+
+      <div class="col-md-6">
+          <h4>Do you have pets?</h4>
+              <select data-placeholder="" class="chosen-select" id="pets_user" name="pets_user" required>
+                      <option value=""></option>
+                      <option name="pets_user" value="1">Yes</option>
+                      <option name="pets_user" value="0">No</option>
+              </select>
+          <h4>Would you like your roommate to have pets?</h4>
+              <select data-placeholder="" class="chosen-select" id="pets_roommate" name="pets_roommate" required>
+                  <option value=""></option>
+                      <option name="pets_roommate" value="yes">Yes</option>
+                      <option name="pets_roommate" value="no">No</option>
+                      <option name="pets_roommate" value="dc">Don't care</option>
+              </select>
+      </div>
+
+      <div class="col-xs-3">
+        <div class="index-prop-img"><img src="http://emojipedia-us.s3.amazonaws.com/cache/78/74/78742c9d074e893b9985d119757e709b.png"></div>
+      </div>
+
+      </div>
+    </div>
+
+    <div class="sectionBlock">
+      <div class="row">
+      
+      <div class="col-md-3">
+        <h1><strong>Smoking</strong></h1>
+      </div>
+
+      <div class="col-md-6">
+          <h4>Do you smoke?</h4>
+             <select class="chosen-select" id="smoke_user" name="smoke_user" required>
+                <option  name="smoke_user" value=""></option>
+               <option  name="smoke_user" value="1">Yes</option>
+              <option name="smoke_user" value="0">No</option>
+            </select>
+
+       <h4>Would you like a roommate who smokes?</h4>
+            <select data-placeholder="" class="chosen-select" id="smoke_roommate" name="smoke_roommate" required>
+              <option value=""></option>
+                    <option name="smoke_roommate" value="yes">Yes</option>
+                    <option name="smoke_roommate" value="no">No</option>
+                    <option name="smoke_roommate" value="dc">Don't care</option>
+            </select>
+      </div>
+
+      <div class="col-xs-3">
+        <div class="index-prop-img"><img src="http://emojipedia-us.s3.amazonaws.com/cache/da/4a/da4a8383b871513edb16c550a2595923.png"></div>
+      </div>
+
+      </div>
+    </div>
+      
+    {{!--   <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit"><i class="fa fa-check-circle" aria-hidden="true"></i>Submit</button> --}}
+     <button type="submit" class="btn btn-primary btn-lg" id="surveysubmitbtn">Submit</button>
+
+ </form>
+</div>
+
+{{/if}}

@@ -1,0 +1,82 @@
+{{#unless logged_in}}
+
+
+This is index page
+
+<br>
+<div class="container">
+<form id="signInForm" action="/users/login" method="POST">
+    <div class="form-group">
+        <label for="oldEmail" class="col-sm-3 control-label">Email</label>
+            <div class="col-sm-3">
+                <input type="email" class="form-control" id="oldEmail" name="email" placeholder="joebruin@ucla.edu" required>
+                    </div>
+                </div>
+        <div class="form-group">
+            <label for="oldPassword" class="col-sm-3 control-label">Password</label>
+                <div class="col-sm-3">
+                        <input type="password" class="form-control" id="oldPassword" name="password" placeholder="********" required>
+                </div>
+                    <div class="col-sm-3">
+                <button type="submit" class="btn btn-default" id="signInButton">Log in</button>
+                    </div>
+</form>
+</div>
+
+<br>
+<br>
+
+
+<div class="container col-md-3">
+  {{!-- sign up --}}
+  <form id="signUpForm" action="/users/create" method="POST">
+    <h1>Sign Up</h1>
+    <div class="form-group">
+
+    <br>
+    <div class="form-group"><br>
+      <label class="sr-only" for="emailAddress">Email Address</label>
+      <input type="email" class="form-control" id="emailAddress" name="email" placeholder="Email Address" required>
+    </div>
+
+    <div class="form-group">
+      <label class="sr-only" for="userName">New First Name</label>
+      <input type="text" class="form-control" id="userName" name="firstname" placeholder="First Name" required>
+    </div>
+
+    <div class="form-group">
+      <label class="sr-only" for="newPass">New Password</label>
+      <input type="password" class="form-control" id="newPass" name="password" placeholder="New Password" required>
+    </div>
+
+    <div>
+      <button type="submit" class="btn btn-default" id="signUpButton">Sign Up</button>
+    </div>
+
+  </form>
+<div class="container">
+
+
+
+{{/unless}}
+
+{{#if logged_in}}
+
+{{!-- header bar --}}
+<nav class="navbar navbar-default navbar-fixed-top">
+<div id="minijumbohead">
+    {{!-- container for spacing --}}
+    <div class="container">
+
+                <h5 class="welcome">{{firstname}}</h5>
+                <p class="welcome"><a href="/users/sign-out">Sign Out</a></p>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+</nav>
+  
+
+{{/if}}
