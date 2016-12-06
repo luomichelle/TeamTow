@@ -1,1 +1,0 @@
-this is register page
