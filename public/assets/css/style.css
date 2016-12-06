@@ -44,3 +44,11 @@ footer {
 	text-align: center;
 	line-height: 50px;
 }
+
+a {
+  color: #00B7FF;
+}
+
+.thumbnail img{        
+   max-height: 147px;
+}
