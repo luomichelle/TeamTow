@@ -1,0 +1,20 @@
+{
+  "name": "express-example",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Omar Patel <omarpatel123@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "react": "^15.3.2"
+  }
+}
