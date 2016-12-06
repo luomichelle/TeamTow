@@ -1,5 +1,0 @@
-{
-  "development": {
-    "mongo_url": "mongodb://localhost/teamtow"
-  }
-}
