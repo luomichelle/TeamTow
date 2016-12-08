@@ -36,7 +36,6 @@ var Home = React.createClass({
 													<div>
 														<p>Welcome! </p>
 														<p>You are user.</p>
-														<a href="/characters"><button id="choose_character">Choose your Character!</button></a>
 													</div>
 											</p>
 										</div>

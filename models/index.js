@@ -7,13 +7,22 @@ var env       = process.env.NODE_ENV || "development";
 var config    = require(path.join(__dirname, '..', 'config', 'config.json'))[env];
 var mongoUrl;
 
+var express = require('express');
+var router  = express.Router();
+var app = express();
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
+
+
 if(process.env.MONGODB_URI != undefined) {
   mongoUrl = process.env.MONGODB_URI;
 } else {
   mongoUrl = config.mongo_url;
 }
 
-mongoose.connect(mongoUrl);
+mongoose.connect(mongoUrl,function() {
+    console.log("Connected to Database");
+});
 
 var db = {};
 

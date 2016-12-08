@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var pwUtil = require('../helpers/password');
-
+// var pwUtil = require('../helpers/password');
+var bcrypt = require('bcryptjs');
 var User = require('../models').User;
 
 //this is the users_controller.js file
@@ -11,15 +11,27 @@ router.get('/signup-signin', function(req,res) {
 	});
 });
 
+router.get('/user', function(req,res) {
+  res.render('users/user', {
+    layout: 'main-registration'
+  });
+});
+
+
+
+
 router.post("/sign-up", function(req, res) {
-  User.find({email: req.body.email}, function(err, users) {
-    if(err) throw err;
-    if(users.length > 0) throw new Error("We already have a user with that name");
+  User.find({
+    email: req.body.email
+  }, function(err, users) {
+    if (users.length > 0){
+      console.log(users)
+      res.send('we already have an email or username for this account')
+    }else{
 
-    pwUtil.hash(req.body.password, function(err, hash) {
-
-      if(err) throw err;
-
+      bcrypt.genSalt(10, function(err, salt) {
+        bcrypt.hash(req.body.password, salt, function(err, hash) {
+      
       var user = new User({
         username: req.body.username,
         password_hash: hash,
@@ -42,17 +54,21 @@ router.post("/sign-up", function(req, res) {
 
         req.session.lastName = user.lastName;
 
-        res.render('index', {
+        res.render('user', {
           email: req.session.user_email,
           logged_in: req.session.logged_in,
           username: req.session.username,
           firstName: req.session.firstName,
           lastName: req.session.lastName
+
+            });
+          });
         });
       });
-    });
+    };
   });
 });
+
 
 router.post("/sign-in", function(req, res) {
   User.find({email: req.body.email}, function(err, users) {
@@ -84,7 +100,7 @@ router.post("/sign-in", function(req, res) {
         });
       } else {
         req.session.logged_in = false;
-        res.redirect("/");
+        res.redirect("index");
       }
     });
   });

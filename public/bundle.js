@@ -21527,15 +21527,6 @@
 										'p',
 										null,
 										'You are user.'
-									),
-									React.createElement(
-										'a',
-										{ href: '/characters' },
-										React.createElement(
-											'button',
-											{ id: 'choose_character' },
-											'Choose your Character!'
-										)
 									)
 								)
 							)
