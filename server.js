@@ -8,6 +8,7 @@ var cookieParser = require('cookie-parser'); // for working with cookies
 var bodyParser = require('body-parser');
 var session = require('express-session'); 
 var methodOverride = require('method-override'); // for deletes in express
+var socket_io    = require( "socket.io" );
 
 // Express settings
 // ================
@@ -15,7 +16,15 @@ var methodOverride = require('method-override'); // for deletes in express
 // instantiate our app
 var app = express();
 var server = require('http').Server(app);
-var io = require('socket.io')(server);
+
+var io           = socket_io();
+app.io           = io;
+
+io.on( "connection", function( socket )
+{
+    console.log( "A user connected" );
+});
+
 
 // override POST to have DELETE and PUT
 app.use(methodOverride('_method'))

@@ -23,6 +23,9 @@ app.set('port', port);
 
 var server = require('../server').server;
 
+var serverIO = http.createServer( app );
+var io     = app.io
+io.attach( server );
 /**
  * Listen on provided port, on all network interfaces.
  */
