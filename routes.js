@@ -1,4 +1,5 @@
-module.exports = function(app){
+module.exports = function(app,io){
+		console.log(io);
 
 		// Our model controllers (rather than routes)
 		var application_controller = require('./controllers/application_controller');
