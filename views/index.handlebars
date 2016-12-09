@@ -1,4 +1,5 @@
 <!--Video Section-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <div class="container-fluid">
     <div class="embed-responsive embed-responsive-16by9">
         <div id="background">
@@ -9,10 +10,45 @@
 								{{/unless}}
 
 								{{#if logged_in}}
+
 									<div>
 										<p>Welcome {{email}}! </p>
-										<p>You are userrrrrrr {{username}}.</p>
+										<p>You are user {{username}}.</p>
+										<p id='username'>{{username}}</p>
 									</div>
+
+							<script>
+
+									function error(err) {
+    									console.log('ERROR(' + err.code + '): ' + err.message);
+									};
+
+							var options = {
+   								 enableHighAccuracy: false,
+   								 timeout: 1000,
+   								 maximumAge: 0
+								};
+
+
+
+						function success(pos) {
+    					var crd = pos.coords;
+    					myLatLng = { lat: crd.latitude, lng: crd.longitude };
+    					console.log(myLatLng);
+    					var username = document.getElementById('username').textContent;
+    					var currentLocation = window.location.origin;
+    					var userNameCoords = {username: username, coords: myLatLng};
+    					$.post('/geolocator', userNameCoords, function(req,res) {
+    						console.log(res);
+    					});
+							};
+
+				document.addEventListener('DOMContentLoaded', function position() {
+   				 navigator.geolocation.watchPosition(success, error, options);
+				});
+
+									</script>
+
 								{{/if}}
 							</p>
 						</div>
@@ -24,8 +60,6 @@
   <p>
     You must login to add a person.
   </p>
-
 {{/unless}}
-
 
 
