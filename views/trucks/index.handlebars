@@ -1,0 +1,32 @@
+<!--Video Section-->
+<div class="container-fluid">
+    <div class="embed-responsive embed-responsive-16by9">
+    <p> this is index  in trucks page</p>
+        <div id="background">
+	         <div id="login_header">
+							<p>
+								{{#unless logged_in}}
+									<a href="/trucks/signup-signin">Sign In or Sign Up</a>
+								{{/unless}}
+
+								{{#if logged_in}}
+									<div>
+										<p>Welcome {{email}}! </p>
+										<p>You are user {{username}}.</p>
+									</div>
+								{{/if}}w
+							</p>
+						</div>
+				</div>
+    </div>          
+</div>
+
+{{#unless logged_in}}
+  <p>
+    You must login to add a person.
+  </p>
+
+{{/unless}}
+
+
+

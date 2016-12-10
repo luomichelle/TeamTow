@@ -2,27 +2,28 @@ var express = require('express');
 var router = express.Router();
 // var pwUtil = require('../helpers/password');
 var bcrypt = require('bcryptjs');
-var User = require('../models').User;
+var User = require('../models').Truck;
 
 //this is the users_controller.js file
 router.get('/signup-signin', function(req,res) {
-	res.render('users/signup-signin', {
+	res.render('trucks/signup-signin', {
 		layout: 'main-registration'
 	});
 });
 
-router.get('/signup', function(req,res) {
-  res.render('users/signup', {
+
+//http://localhost:3000/trucks/truck
+router.get('/truck', function(req,res) {
+  res.render('trucks/truck', {
     layout: 'main-registration'
   });
 });
 
-router.get('/user', function(req,res) {
-  res.render('users/user', {
+router.get('/index', function(req,res) {
+  res.render('trucks/index', {
     layout: 'main-registration'
   });
 });
-
 
 
 router.post("/sign-up", function(req, res) {
@@ -37,7 +38,7 @@ router.post("/sign-up", function(req, res) {
       bcrypt.genSalt(10, function(err, salt) {
         bcrypt.hash(req.body.password, salt, function(err, hash) {
       
-      var user = new User({
+      var truck = new User({
         username: req.body.username,
         password_hash: hash,
         email: req.body.email,
@@ -46,21 +47,24 @@ router.post("/sign-up", function(req, res) {
 
       });
 
-      user.save(function(err) {
+      truck.save(function(err) {
+
+        console.log("truck is trying to save11111")
 
         if(err) throw err;
 
         req.session.logged_in = true;
         // the username to the session
-        req.session.username = user.username;
+        req.session.username = truck.username;
         // and the user's email.
-        req.session.user_email = user.email;
+        req.session.user_email = truck.email;
 
-        req.session.firstName = user.firstName;
+        req.session.firstName = truck.firstName;
 
-        req.session.lastName = user.lastName;
+        req.session.lastName = truck.lastName;
 
-        res.render('user', {
+
+        res.render('trucks/truck', {
           email: req.session.user_email,
           logged_in: req.session.logged_in,
           username: req.session.username,
@@ -113,12 +117,7 @@ router.post("/sign-in", function(req, res) {
 });
 
 router.get("/sign-out", function(req,res) {
- var username = req.session.username
   req.session.destroy(function(err) {
-      User.update({username: username}, {loggedin:false}, 
-    function(err, num) {
-        console.log("loggedout "+username);
-    });
      res.redirect("/")
   })
 });
