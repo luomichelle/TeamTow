@@ -22,11 +22,15 @@
 								L.mapbox.accessToken = 'pk.eyJ1IjoibHVvbWVtZSIsImEiOiJjaXZyYWk1YXUwNGNwMnRuMjUyYTkwbWM5In0.BuIILDwp1QzgOYe0rhw5hQ';
 								var map = L.mapbox.map('map', 'mapbox.streets');
 								var x = document.getElementById("map");
+								var myLatLng;
+								var userMarker;
 
 								var myLayer = L.mapbox.featureLayer().addTo(map);
 									function error(err) {
     									console.log('ERROR(' + err.code + '): ' + err.message);
 									};
+							
+							
 
 							var options = {
    								 enableHighAccuracy: false,
@@ -34,8 +38,10 @@
    								 maximumAge: 0
 								};
 
-
+					//IF LOCATION EXISTS THEN ADD MARKER THIS DOESNT WORK SDKLFJSDLKF
+							//  userMarker =	L.marker([myLatLng.lat, myLatLng.lng]).addTo(map);
 							
+
 						function success(pos) {
     					var crd = pos.coords;
     					myLatLng = { lat: crd.latitude, lng: crd.longitude };
@@ -43,7 +49,9 @@
     					var username = document.getElementById('username').textContent;
     					var currentLocation = window.location.origin;
     					var userNameCoords = {username: username, coords: myLatLng};
-    					L.marker([myLatLng.lat, myLatLng.lng]).addTo(map);
+    					if(userMarker){
+    					userMarker.setPosition(new LatLng(myLatLng.lat, myLatLng.lng))
+    					}
     					$.post('/geolocator', userNameCoords, function(req,res) {
     						console.log(res);
     					});
