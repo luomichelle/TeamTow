@@ -35,6 +35,12 @@
     									console.log('ERROR(' + err.code + '): ' + err.message);
 									};
 							
+							function makeMarker(){
+
+							if (navigator.geolocation && myLatLng) {
+							 userMarker =	L.marker([myLatLng.lat, myLatLng.lng]).addTo(map);
+							}
+							}
 							
 
 							var options = {
@@ -42,11 +48,7 @@
    								 timeout: 1000,
    								 maximumAge: 0
 								};
-
-					//IF LOCATION EXISTS THEN ADD MARKER THIS DOESNT WORK SDKLFJSDLKF
-							//  userMarker =	L.marker([myLatLng.lat, myLatLng.lng]).addTo(map);
-							
-
+								
 						function success(pos) {
     					var crd = pos.coords;
     					myLatLng = { lat: crd.latitude, lng: crd.longitude };
@@ -55,15 +57,17 @@
     					var currentLocation = window.location.origin;
     					var userNameCoords = {username: username, coords: myLatLng};
     					if(userMarker){
-    					userMarker.setPosition(new LatLng(myLatLng.lat, myLatLng.lng))
+    					userMarker.setLatLng( newLatLng = new L.LatLng(myLatLng.lat,myLatLng.lng));
     					}
     					$.post('/geolocator', userNameCoords, function(req,res) {
     						console.log(res);
     					});
+
+    					return myLatLng
 							};
 
 				document.addEventListener('DOMContentLoaded', function position() {
-   				 navigator.geolocation.watchPosition(success, error, options);
+   				 navigator.geolocation.watchPosition(success, error, options)
 				});
 
 									</script>
