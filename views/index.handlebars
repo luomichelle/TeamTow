@@ -1,4 +1,6 @@
 <!--Video Section-->
+{{> nav }}
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <div class="container-fluid">
     <div class="embed-responsive embed-responsive-16by9">
@@ -6,13 +8,15 @@
 	         <div id="login_header">
 							<p>
 								{{#unless logged_in}}
-									<a href="/users/signup-signin">Sign In or Sign Up NOOOOOO</a>
+									<a href="/users/signup-signin">Sign In or Sign Up</a>
 								{{/unless}}
 
 								{{#if logged_in}}
 
 									<div>
-										<p>Welcome {{email}}! </p>
+										
+
+										<h3>Welcome {{email}}! </h3>
 										<p>You are user {{username}}.</p>
 										<p id='username'>{{username}}</p>
 									</div>

@@ -26,22 +26,40 @@ var Home = React.createClass({
 	},
 	render: function() {
 		return (
-				<div className="container-fluid">
-				    <div className="embed-responsive embed-responsive-16by9">
-				        <div id="background">
-					         <div id="login_header">
-											<p>
-													<a href="/users/signup-signin">Sign In or Sign Up</a>
+				 
+			    <nav className="navbar navbar-default navbar-fixed-top" role="navigation">
+			        <div className="container">
+			            <div className="navbar-header page-scroll">
+			                <button type="button" className="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+			                    <span className="sr-only">Toggle navigation</span>
+			                    <span className="icon-bar"></span>
+			                    <span className="icon-bar"></span>
+			                    <span className="icon-bar"></span>
+			                </button>
+			                <a className="navbar-brand page-scroll" href="#">Team Tow</a>
+			            </div>
+			            <div className="collapse navbar-collapse navbar-ex1-collapse">
+			                <ul className="nav navbar-nav">
+			                    <li>
+			                        <a className="page-scroll" href="/users/signup-signin">Sign In</a>
+			                    </li>
+			                    <li>
+			                        <a className="page-scroll" href="/users/signup">New User</a>
+			                    </li>
+			                    <li>
+			                        <a className="page-scroll" href="#contact">Contact</a>
+			                    </li>
+			                    <li>
+	                                <a href="#"><span class="glyphicon glyphicon-user"></span> Profile</a>
+	                            </li>
+	                             <li>
+	                                <a href="/users/sign-out"><span class="glyphicon glyphicon-log-in"></span> Sign Out</a>
+	                            </li>
+			                </ul>
+			            </div>
+			        </div>
+			    </nav>
 
-													<div>
-														<p>Welcome YOOOOOO! </p>
-														<p>You are user.</p>
-													</div>
-											</p>
-										</div>
-								</div>
-				    </div>          
-				</div>
 		);
 	}
 });
