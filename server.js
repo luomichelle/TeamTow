@@ -14,6 +14,8 @@ var methodOverride = require('method-override'); // for deletes in express
 
 // instantiate our app
 var app = express();
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
 
 // override POST to have DELETE and PUT
 app.use(methodOverride('_method'))
@@ -27,6 +29,11 @@ app.use(session(
     saveUninitialized: true
 	}
 ));
+
+app.use(function(req, res, next){
+  res.io = io;
+  next();
+});
 
 app.use(cookieParser());
 
@@ -58,6 +65,18 @@ app.use(function(req, res, next) {
   next(err);
 });
 
+
+// development error handler
+// will print stacktrace
+if (app.get('env') === 'development') {
+  app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+    res.render('error', {
+      message: err.message,
+      error: err
+    });
+  });
+}
 // error handler
 // no stacktraces leaked to user unless in development environment
 app.use(function(err, req, res, next) {
@@ -71,7 +90,7 @@ app.use(function(err, req, res, next) {
 
 
 // our module get's exported as app.
-module.exports = app;
+module.exports = {app: app, server: server};
 
 
 // Where's the listen? Open up bin/www, and read the comments.
