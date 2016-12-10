@@ -1,6 +1,16 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-image: url('/assets/img/lego_tow.jpg');
+  
+  background-repeat: no-repeat;
+  background-size:cover;
+  /*background-position: center center;*/
+
+}
+
+.navbar-ex1-collapse {
+  float:right;
 }
 
 a {
@@ -9,8 +19,4 @@ a {
 
 .thumbnail img{        
    max-height: 147px;
-}
-
-.container-glud{
-	
 }

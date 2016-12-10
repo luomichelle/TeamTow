@@ -3,7 +3,7 @@ var router  = express.Router();
 var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
-
+var User = require('../models').User;
 
 
 // router.get('/', function(req, res) {
@@ -16,7 +16,17 @@ router.get('/', function(req, res) {
   res.render('index');
 });
 
+router.post('/geolocator',function(req,res){
+	console.log(req.body);
+	var userName = req.body.username;
+	var lat = req.body['coords[lat]'];
+	var lng = req.body['coords[lng]'];
+	User.update({username:userName}, {latitude:lat,longitude: lng,loggedin:true}, 
+    function(err, num) {
+        console.log("updated "+userName);
+    });
 
+})
 
 
 // router.get('/client', function(req, res) { 
