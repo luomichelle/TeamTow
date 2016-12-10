@@ -21526,7 +21526,7 @@
 									React.createElement(
 										'p',
 										null,
-										'You are userrrrr react.'
+										'React page You are.'
 									)
 								)
 							)
