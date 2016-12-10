@@ -2,17 +2,19 @@ var express = require('express');
 var router = express.Router();
 // var pwUtil = require('../helpers/password');
 var bcrypt = require('bcryptjs');
-var User = require('../models').User;
+var User = require('../models').truck;
 
 //this is the users_controller.js file
 router.get('/signup-signin', function(req,res) {
-	res.render('users/signup-signin', {
+	res.render('trucks/signup-signin', {
 		layout: 'main-registration'
 	});
 });
 
-router.get('/user', function(req,res) {
-  res.render('users/user', {
+
+//http://localhost:3000/trucks/truck
+router.get('/truck', function(req,res) {
+  res.render('trucks/truck', {
     layout: 'main-registration'
   });
 });
@@ -55,7 +57,8 @@ router.post("/sign-up", function(req, res) {
 
         req.session.lastName = user.lastName;
 
-        res.render('user', {
+
+        res.render('truck', {
           email: req.session.user_email,
           logged_in: req.session.logged_in,
           username: req.session.username,
