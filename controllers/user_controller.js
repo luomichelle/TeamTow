@@ -11,6 +11,12 @@ router.get('/signup-signin', function(req,res) {
 	});
 });
 
+router.get('/signup', function(req,res) {
+  res.render('users/signup', {
+    layout: 'main-registration'
+  });
+});
+
 router.get('/user', function(req,res) {
   res.render('users/user', {
     layout: 'main-registration'
@@ -107,7 +113,12 @@ router.post("/sign-in", function(req, res) {
 });
 
 router.get("/sign-out", function(req,res) {
+ var username = req.session.username
   req.session.destroy(function(err) {
+      User.update({username: username}, {loggedin:false}, 
+    function(err, num) {
+        console.log("loggedout "+username);
+    });
      res.redirect("/")
   })
 });
