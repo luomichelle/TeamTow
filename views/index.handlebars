@@ -15,10 +15,15 @@
 										<p>Welcome {{email}}! </p>
 										<p>You are user {{username}}.</p>
 										<p id='username'>{{username}}</p>
+										<div id="map" style="width:500px;height:500px"></div>
 									</div>
 
 							<script>
+								L.mapbox.accessToken = 'pk.eyJ1IjoibHVvbWVtZSIsImEiOiJjaXZyYWk1YXUwNGNwMnRuMjUyYTkwbWM5In0.BuIILDwp1QzgOYe0rhw5hQ';
+								var map = L.mapbox.map('map', 'mapbox.streets');
+								var x = document.getElementById("map");
 
+								var myLayer = L.mapbox.featureLayer().addTo(map);
 									function error(err) {
     									console.log('ERROR(' + err.code + '): ' + err.message);
 									};
@@ -30,7 +35,7 @@
 								};
 
 
-
+							
 						function success(pos) {
     					var crd = pos.coords;
     					myLatLng = { lat: crd.latitude, lng: crd.longitude };
@@ -38,6 +43,7 @@
     					var username = document.getElementById('username').textContent;
     					var currentLocation = window.location.origin;
     					var userNameCoords = {username: username, coords: myLatLng};
+    					L.marker([myLatLng.lat, myLatLng.lng]).addTo(map);
     					$.post('/geolocator', userNameCoords, function(req,res) {
     						console.log(res);
     					});
