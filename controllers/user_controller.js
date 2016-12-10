@@ -54,7 +54,7 @@ router.post("/sign-up", function(req, res) {
 
         req.session.lastName = user.lastName;
 
-        res.render('user', {
+        res.render('index', {
           email: req.session.user_email,
           logged_in: req.session.logged_in,
           username: req.session.username,
