@@ -1,7 +1,10 @@
 <!--Video Section-->
+{{> nav }}
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <div class="container-fluid">
     <div class="embed-responsive embed-responsive-16by9">
+    <p> this is main index page</p>
         <div id="background">
 	         <div id="login_header">
 							<p>
@@ -13,6 +16,8 @@
 
 									<div>
 										<p>Welcome {{email}}! </p>
+										<p>You are user {{username}}.</p>
+										<h3>Welcome {{email}}! </h3>
 										<p>You are user {{username}}.</p>
 										<p id='username'>{{username}}</p>
 										<div id="map" style="width:500px;height:500px"></div>

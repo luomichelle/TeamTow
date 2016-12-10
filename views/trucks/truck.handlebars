@@ -1,18 +1,16 @@
 <!--Video Section-->
 <div class="container-fluid">
     <div class="embed-responsive embed-responsive-16by9">
-    <h1> this is USER PAGE </h1>
+    <h1> this is Tow Truck's PAGE </h1>
         <div id="background">
 	         <div id="login_header">
 							<p>
 								{{#unless logged_in}}
-									<a href="/users/signup-signin">Sign In or Sign Up</a>
+									<a href="/trucks/signup-signin">Sign In or Sign Up</a>
 								{{/unless}}
 
 								{{#if logged_in}}
 									<div>
-										<p> Views/User.handelbars</p>
-
 										<p>Welcome {{email}}! </p>
 										<p>You are user {{username}}.</p>
 									</div>
