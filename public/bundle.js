@@ -21780,38 +21780,83 @@
 		},
 		render: function render() {
 			return React.createElement(
-				'div',
-				{ className: 'container-fluid' },
+				'nav',
+				{ className: 'navbar navbar-default navbar-fixed-top', role: 'navigation' },
 				React.createElement(
 					'div',
-					{ className: 'embed-responsive embed-responsive-16by9' },
+					{ className: 'container' },
 					React.createElement(
 						'div',
-						{ id: 'background' },
+						{ className: 'navbar-header page-scroll' },
 						React.createElement(
-							'div',
-							{ id: 'login_header' },
+							'button',
+							{ type: 'button', className: 'navbar-toggle', 'data-toggle': 'collapse', 'data-target': '.navbar-ex1-collapse' },
 							React.createElement(
-								'p',
+								'span',
+								{ className: 'sr-only' },
+								'Toggle navigation'
+							),
+							React.createElement('span', { className: 'icon-bar' }),
+							React.createElement('span', { className: 'icon-bar' }),
+							React.createElement('span', { className: 'icon-bar' })
+						),
+						React.createElement(
+							'a',
+							{ className: 'navbar-brand page-scroll', href: '#' },
+							'Team Tow'
+						)
+					),
+					React.createElement(
+						'div',
+						{ className: 'collapse navbar-collapse navbar-ex1-collapse' },
+						React.createElement(
+							'ul',
+							{ className: 'nav navbar-nav' },
+							React.createElement(
+								'li',
 								null,
 								React.createElement(
 									'a',
-									{ href: '/users/signup-signin' },
-									'Sign In or Sign Up'
-								),
+									{ className: 'page-scroll', href: '/users/signup-signin' },
+									'Sign In'
+								)
+							),
+							React.createElement(
+								'li',
+								null,
 								React.createElement(
-									'div',
-									null,
-									React.createElement(
-										'p',
-										null,
-										'Welcome! '
-									),
-									React.createElement(
-										'p',
-										null,
-										'You are user.'
-									)
+									'a',
+									{ className: 'page-scroll', href: '/users/signup' },
+									'New User'
+								)
+							),
+							React.createElement(
+								'li',
+								null,
+								React.createElement(
+									'a',
+									{ className: 'page-scroll', href: '#contact' },
+									'Contact'
+								)
+							),
+							React.createElement(
+								'li',
+								null,
+								React.createElement(
+									'a',
+									{ href: '#' },
+									React.createElement('span', { 'class': 'glyphicon glyphicon-user' }),
+									' Profile'
+								)
+							),
+							React.createElement(
+								'li',
+								null,
+								React.createElement(
+									'a',
+									{ href: '/users/sign-out' },
+									React.createElement('span', { 'class': 'glyphicon glyphicon-log-in' }),
+									' Sign Out'
 								)
 							)
 						)

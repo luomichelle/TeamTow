@@ -11,6 +11,12 @@ router.get('/signup-signin', function(req,res) {
 	});
 });
 
+router.get('/signup', function(req,res) {
+  res.render('users/signup', {
+    layout: 'main-registration'
+  });
+});
+
 router.get('/user', function(req,res) {
   res.render('users/user', {
     layout: 'main-registration'
