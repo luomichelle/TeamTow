@@ -34,7 +34,7 @@ var Home = React.createClass({
 													<a href="/users/signup-signin">Sign In or Sign Up</a>
 
 													<div>
-														<p>Welcome! </p>
+														<p>Welcome YOOOOOO! </p>
 														<p>You are user.</p>
 													</div>
 											</p>
