@@ -10,7 +10,8 @@ var user = module.exports = {
     firstName: {type: String},
     lastName: {type: String},
     latitude: {type: Number, default: 0},
-    longitude: {type: Number, default:0}
+    longitude: {type: Number, default:0},
+    loggedin: {type: Boolean, default:false}
   })
 };
 
