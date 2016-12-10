@@ -19,7 +19,6 @@ router.get('/user', function(req,res) {
 
 
 
-
 router.post("/sign-up", function(req, res) {
   User.find({
     email: req.body.email

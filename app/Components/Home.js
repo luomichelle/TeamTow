@@ -35,7 +35,7 @@ var Home = React.createClass({
 
 													<div>
 														<p>Welcome! </p>
-														<p>You are user.</p>
+														<p>You are userrrrr react.</p>
 													</div>
 											</p>
 										</div>
