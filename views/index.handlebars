@@ -1,88 +1,99 @@
 <!--Video Section-->
-{{> nav }}
+<div>
+	{{> nav }}
+</div>
+<div class="container">
+	<div class="row profile">
+		<div class="col-md-3">
+			{{> sidebar }}
+		</div>
+		<div class="col-md-9">
+			<div class="profile-content" id="background">
+		        <div id="login_header">
+					{{#unless logged_in}}
+						<p><a href="/users/signup-signin">Sign In or Sign Up</a></p>
+					{{/unless}}
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-<div class="container-fluid">
-    <div class="embed-responsive embed-responsive-16by9">
-    <p> this is main index page</p>
-        <div id="background">
-	         <div id="login_header">
-							<p>
-								{{#unless logged_in}}
-									<a href="/users/signup-signin">Sign In or Sign Up</a>
-								{{/unless}}
+					{{#if logged_in}}
 
-								{{#if logged_in}}
 
-									<div>
-										<p>Welcome {{email}}! </p>
-										<p>You are user {{username}}.</p>
-										<h3>Welcome {{email}}! </h3>
-										<p>You are user {{username}}.</p>
-										<p id='username'>{{username}}</p>
-										<div id="map" style="width:500px;height:500px"></div>
-									</div>
+					<div class="panel panel-default">
+	                    <div class="panel-heading text-center">
+	                    	<h1>Welcome {{username}}! </h1>							
+							<h3>Your email: {{email}}! </h3>
+							<p>Your latitude: {{latitude}}.</p>							
+							<p>Your longitude: {{longitude}}.</p>							
+							<p id='username'>{{username}}</p>
+	                        <h4><i class="fa fa-lg fa-map"></i> MAP </h4>
+	                    </div>
+	                    <div class="panel-body">
+	                    	<div id="map" style="width: 100%;height: 500px;"></div>
+	                        
+	                    </div>
+	                </div>
 
-							<script>
-								L.mapbox.accessToken = 'pk.eyJ1IjoibHVvbWVtZSIsImEiOiJjaXZyYWk1YXUwNGNwMnRuMjUyYTkwbWM5In0.BuIILDwp1QzgOYe0rhw5hQ';
-								var map = L.mapbox.map('map', 'mapbox.streets');
-								var x = document.getElementById("map");
-								var myLatLng;
-								var userMarker;
-
-								var myLayer = L.mapbox.featureLayer().addTo(map);
-									function error(err) {
-    									console.log('ERROR(' + err.code + '): ' + err.message);
-									};
-							
-							function makeMarker(){
-
-							if (navigator.geolocation && myLatLng) {
-							 userMarker =	L.marker([myLatLng.lat, myLatLng.lng]).addTo(map);
-							}
-							}
-							
-
-							var options = {
-   								 enableHighAccuracy: false,
-   								 timeout: 1000,
-   								 maximumAge: 0
-								};
-								
-						function success(pos) {
-    					var crd = pos.coords;
-    					myLatLng = { lat: crd.latitude, lng: crd.longitude };
-    					console.log(myLatLng);
-    					var username = document.getElementById('username').textContent;
-    					var currentLocation = window.location.origin;
-    					var userNameCoords = {username: username, coords: myLatLng};
-    					if(userMarker){
-    					userMarker.setLatLng( newLatLng = new L.LatLng(myLatLng.lat,myLatLng.lng));
-    					}
-    					$.post('/geolocator', userNameCoords, function(req,res) {
-    						console.log(res);
-    					});
-
-    					return myLatLng
-							};
-
-				document.addEventListener('DOMContentLoaded', function position() {
-   				 navigator.geolocation.watchPosition(success, error, options)
-				});
-
-									</script>
-			
-								{{/if}}
-							</p>
-						</div>
+					{{/if}}
+				
 				</div>
-    </div>          
+			</div>
+	    </div>          
+	</div>
+
+
+		{{#unless logged_in}}
+		  <p>
+		    You must login to add a person.
+		  </p>
+		{{/unless}}
 </div>
 
-{{#unless logged_in}}
-  <p>
-    You must login to add a person.
-  </p>
-{{/unless}}
 
+	<script>
+			L.mapbox.accessToken = 'pk.eyJ1IjoibHVvbWVtZSIsImEiOiJjaXZyYWk1YXUwNGNwMnRuMjUyYTkwbWM5In0.BuIILDwp1QzgOYe0rhw5hQ';
+			var map = L.mapbox.map('map', 'mapbox.streets');
+			var x = document.getElementById("map");
+			var myLatLng;
+			var userMarker;
+
+			var myLayer = L.mapbox.featureLayer().addTo(map);
+				function error(err) {
+					console.log('ERROR(' + err.code + '): ' + err.message);
+				};
+			
+			function makeMarker(){
+
+			if (navigator.geolocation && myLatLng) {
+			 userMarker =	L.marker([myLatLng.lat, myLatLng.lng]).addTo(map);
+			}
+			}
+			
+
+			var options = {
+					 enableHighAccuracy: false,
+					 timeout: 1000,
+					 maximumAge: 0
+				};
+				
+		function success(pos) {
+		var crd = pos.coords;
+		myLatLng = { lat: crd.latitude, lng: crd.longitude };
+		console.log(myLatLng);
+		var username = document.getElementById('username').textContent;
+		var currentLocation = window.location.origin;
+		var userNameCoords = {username: username, coords: myLatLng};
+		if(userMarker){
+		userMarker.setLatLng( newLatLng = new L.LatLng(myLatLng.lat,myLatLng.lng));
+		}
+		$.post('/geolocator', userNameCoords, function(req,res) {
+			console.log(res);
+		});
+
+		return myLatLng
+			};
+
+		document.addEventListener('DOMContentLoaded', function position() {
+			 navigator.geolocation.watchPosition(success, error, options)
+		});
+
+	</script>
 
