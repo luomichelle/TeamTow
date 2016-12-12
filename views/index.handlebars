@@ -38,7 +38,7 @@
 							function makeMarker(){
 
 							if (navigator.geolocation && myLatLng) {
-							 userMarker =	L.marker([myLatLng.lat, myLatLng.lng]).addTo(map);
+							 
 							}
 							}
 							
@@ -62,12 +62,15 @@
     					$.post('/geolocator', userNameCoords, function(req,res) {
     						console.log(res);
     					});
-
-    					return myLatLng
 							};
 
+						function successCurrent(data){
+							userMarker =	L.marker([data.coords.latitude, data.coords.longitude]).addTo(map);
+						}
+
 				document.addEventListener('DOMContentLoaded', function position() {
-   				 navigator.geolocation.watchPosition(success, error, options)
+   				 navigator.geolocation.watchPosition(success, error, options),
+   				 navigator.geolocation.getCurrentPosition(successCurrent)
 				});
 
 									</script>
