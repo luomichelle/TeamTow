@@ -21,7 +21,7 @@ router.post('/geolocator',function(req,res){
 	var userName = req.body.username;
 	var lat = req.body['coords[lat]'];
 	var lng = req.body['coords[lng]'];
-	User.update({username:userName}, {latitude:lat,longitude: lng,loggedin:true}, 
+	User.update({username:userName}, {latitude:lat,longitude:lng,loggedin:true}, 
     function(err, num) {
         console.log("updated "+userName);
     });

@@ -8,6 +8,9 @@ body {
   /*background-position: center center;*/
 
 }
+.navbar {
+  /*background-color: #91B54D;*/
+}
 .navbar-brand {
 	font: 30px Helvetica, Arial, sans-serif;
 
@@ -25,10 +28,40 @@ a {
    max-height: 147px;
 }
 
+/*-----------Mapbox direction*/
+#inputs,
+#errors,
+#directions {
+    position: absolute;
+    width: 33.3333%;
+    max-width: 220px;
+    min-width: 200px;
+}
 
+#inputs {
+    z-index: 10;
+    top: 263px;
+    left: 90px;
+}
 
+#directions {
+    z-index: 99;
+    background: rgba(0,0,0,.8);
+    top: 252px;
+    right: 35px;
+    bottom: 0;
+    overflow: auto;
+}
 
-
+#errors {
+    z-index: 8;
+    opacity: 0;
+    padding: 10px;
+    border-radius: 0 0 3px 3px;
+    background: rgba(0,0,0,.25);
+    top: 90px;
+    left: 10px;
+}
 
 
 /*-----Profile Sidebar CSS*/

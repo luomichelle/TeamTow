@@ -4,10 +4,10 @@
 </div>
 <div class="container">
 	<div class="row profile">
-		<div class="col-md-3">
+		<div class="col-xs-3">
 			{{> sidebar }}
 		</div>
-		<div class="col-md-9">
+		<div class="col-xs-9">
 			<div class="profile-content" id="background">
 		        <div id="login_header">
 					{{#unless logged_in}}
@@ -19,17 +19,104 @@
 
 					<div class="panel panel-default">
 	                    <div class="panel-heading text-center">
-	                    	<h1>Welcome {{username}}! </h1>							
+	                    	<h1 style="text-transform: capitalize;">Welcome {{username}}! </h1>							
 							<h3>Your email: {{email}}! </h3>
-							<p>Your latitude: {{latitude}}.</p>							
-							<p>Your longitude: {{longitude}}.</p>							
+							<p>Your latitude: {{lat}}.</p>							
+							<p>Your longitude: {{lng}}.</p>							
 							<p id='username'>{{username}}</p>
-	                        <h4><i class="fa fa-lg fa-map"></i> MAP </h4>
-	                    </div>
-	                    <div class="panel-body">
-	                    	<div id="map" style="width: 100%;height: 500px;"></div>
 	                        
 	                    </div>
+	                    <div class="panel-body">
+	                    	
+		                    	<div id="map" style="width: 100%;height: 500px;"></div>
+		                    	<div id='inputs'></div>
+								<div id='errors'></div>
+								<div id='directions'>
+								  <div id='routes'></div>
+								  <div id='instructions'></div>
+								</div>	                       
+								
+						<script>
+						L.mapbox.accessToken = 'pk.eyJ1IjoiZGltYXNvbCIsImEiOiJjaXZycnFjeG8wM3lwMnpxdGR2ZDc1emU3In0.I-hsvy9AtsWfZozW0-BRjA';
+						var map = L.mapbox.map('map','mapbox.streets')
+								.addControl(L.mapbox.geocoderControl('mapbox.places', {
+								        autocomplete: true }))
+								.setView([34.17, -118.51],10);
+							
+						
+						var myLayer = L.mapbox.featureLayer().addTo(map);
+
+
+						// This uses the HTML5 geolocation API, which is available on
+						// most mobile browsers and modern browsers, but not in Internet Explorer
+						//
+						// See this chart of compatibility for details:
+						// http://caniuse.com/#feat=geolocation
+						if (!navigator.geolocation) {
+						    map.innerHTML = 'Please Allow Geolocation';
+						} else {
+								  map.locate();						   
+						}
+
+						// Once we've got a position, zoom and center the map
+						// on it, and add a single marker.
+						map.on('locationfound', function(e) {
+						    map.fitBounds(e.bounds);
+						    map.setZoom(11);
+						    myLayer.setGeoJSON({
+						        type: 'Feature',
+						        geometry: {
+						            type: 'Point',
+						            coordinates: [e.latlng.lng, e.latlng.lat]
+						        },
+						        properties: {
+						            'title': '<p style="text-transform: capitalize;font-size:20px;">{{username}} is here !</p>',
+						            'marker-color': '#3bb2d0',
+						            'marker-symbol': 'car',
+						            'marker-size': 'large'
+						        }
+						    });
+
+						    myLayer.on('mouseover', function(e) {
+							    e.layer.openPopup();
+							});
+							myLayer.on('mouseout', function(e) {
+							    e.layer.closePopup();
+							});
+						   
+						});
+						
+						// move the attribution control out of the way
+						map.attributionControl.setPosition('bottomleft');
+
+						// create the initial directions object, from which the layer
+						// and inputs will pull data.
+						var directions = L.mapbox.directions();
+
+						var directionsLayer = L.mapbox.directions.layer(directions)
+						    .addTo(map);
+
+						var directionsInputControl = L.mapbox.directions.inputControl('inputs', directions)
+						    .addTo(map);
+
+						var directionsErrorsControl = L.mapbox.directions.errorsControl('errors', directions)
+						    .addTo(map);
+
+						var directionsRoutesControl = L.mapbox.directions.routesControl('routes', directions)
+						    .addTo(map);
+
+						var directionsInstructionsControl = L.mapbox.directions.instructionsControl('instructions', directions)
+						    .addTo(map);
+
+						// If the user chooses not to allow their location
+						// to be shared, display an error message.
+						map.on('locationerror', function() {
+						    map.innerHTML = 'Position could not be found';
+						});
+						</script>
+							
+
+	                    </div> <!--panel-body-->
 	                </div>
 
 					{{/if}}
@@ -48,7 +135,9 @@
 </div>
 
 
-	<script>
+
+
+	<!-- <script>
 			L.mapbox.accessToken = 'pk.eyJ1IjoibHVvbWVtZSIsImEiOiJjaXZyYWk1YXUwNGNwMnRuMjUyYTkwbWM5In0.BuIILDwp1QzgOYe0rhw5hQ';
 			var map = L.mapbox.map('map', 'mapbox.streets');
 			var x = document.getElementById("map");
@@ -95,5 +184,5 @@
 			 navigator.geolocation.watchPosition(success, error, options)
 		});
 
-	</script>
+	</script> -->
 
