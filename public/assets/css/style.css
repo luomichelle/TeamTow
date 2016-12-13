@@ -9,7 +9,10 @@ body {
 
 }
 .navbar {
-  /*background-color: #91B54D;*/
+  background-color: black;
+  color: #74baed;
+  padding-bottom: 15px;
+  border: 0;
 }
 .navbar-brand {
 	font: 30px Helvetica, Arial, sans-serif;
