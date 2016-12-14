@@ -12,17 +12,10 @@
 					{{#unless logged_in}}
 						<p><a href="/users/signup-signin">Sign In or Sign Up</a></p>
 					{{/unless}}
-<<<<<<< HEAD
 
 					{{#if logged_in}}
 
 
-=======
-
-					{{#if logged_in}}
-
-
->>>>>>> master
 					<div class="panel panel-default">
 	                    <div class="panel-heading text-center">
 	                    	<h1 style="text-transform: capitalize;">Welcome {{username}}! </h1>							
@@ -40,16 +33,12 @@
 								<div id='directions'>
 								  <div id='routes'></div>
 								  <div id='instructions'></div>
-<<<<<<< HEAD
-								</div>	                       
-=======
 								</div>	
 								<div style='width:200px;height:200px'>
 									<h6> Online Users </h6>
 									<ul id="onlineUsers">
 									</ul>
 								</div>                       
->>>>>>> master
 								
 						<script>
 						L.mapbox.accessToken = 'pk.eyJ1IjoiZGltYXNvbCIsImEiOiJjaXZycnFjeG8wM3lwMnpxdGR2ZDc1emU3In0.I-hsvy9AtsWfZozW0-BRjA';
@@ -58,11 +47,8 @@
 								        autocomplete: true }))
 								.setView([34.17, -118.51],10);
 						var userMarker;
-<<<<<<< HEAD
-=======
 						var truckMarker;
 						var trucks;
->>>>>>> master
 						var isFound = false;
 						var coordinatesUser;
 							
@@ -89,11 +75,7 @@
 							coordinatesUser = {latitude: e.latitude,
 											  longitude: e.longitude,
 											   username};
-<<<<<<< HEAD
-							console.log('Users Coords' +coordinatesUser);
-=======
 							//console.log(coordinatesUser);
->>>>>>> master
 						    map.fitBounds(e.bounds);
 						    map.setZoom(11);
 						    myLayer.on('mouseover', function(e) {
@@ -106,11 +88,7 @@
 						   
 						   		if(isFound === true){
 						$.post('/geolocator', coordinatesUser, function(req,res) {
-<<<<<<< HEAD
-    						console.log('Post request' +  res);
-=======
     						//console.log('Post request' +  res);
->>>>>>> master
     					});
 
 						}
@@ -133,30 +111,6 @@
 
 						var directionsInputControl = L.mapbox.directions.inputControl('inputs', directions)
 						    .addTo(map);
-<<<<<<< HEAD
-
-						var directionsErrorsControl = L.mapbox.directions.errorsControl('errors', directions)
-						    .addTo(map);
-
-						var directionsRoutesControl = L.mapbox.directions.routesControl('routes', directions)
-						    .addTo(map);
-
-						var directionsInstructionsControl = L.mapbox.directions.instructionsControl('instructions', directions)
-						    .addTo(map);
-
-						// If the user chooses not to allow their location
-						// to be shared, display an error message.
-						map.on('locationerror', function() {
-						    map.innerHTML = 'Position could not be found';
-						});
-						$(document).ready(function(){
-
-						userMarker = L.marker([0, 0]).addTo(map);
-
-						$.get('/loggedinusers', function(data){
-							console.log(data);
-						})
-=======
 
 						var directionsErrorsControl = L.mapbox.directions.errorsControl('errors', directions)
 						    .addTo(map);
@@ -198,7 +152,6 @@
 							setInterval(function(){getOnClick(trucks)},10000);
 
 						});
->>>>>>> master
 
 						});
 						</script>

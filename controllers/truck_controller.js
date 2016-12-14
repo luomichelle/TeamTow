@@ -6,9 +6,9 @@ var User = require('../models').Truck;
 
 //this is the users_controller.js file
 router.get('/signup-signin', function(req,res) {
-  res.render('trucks/signup-signin', {
-    layout: 'main-registration'
-  });
+	res.render('trucks/signup-signin', {
+		layout: 'main-registration'
+	});
 });
 
 
