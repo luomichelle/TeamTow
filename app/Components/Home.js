@@ -41,6 +41,9 @@ var Home = React.createClass({
 						<div className="collapse navbar-collapse navbar-ex1-collapse">
 							<ul className="nav navbar-nav">
 								<li>
+									<a className="truckClass" href="/truck/signup-signin">TOW TRUCK</a>
+								</li>
+								<li>
 									<a className="page-scroll" href="/users/signup-signin">Sign In</a>
 								</li>
 								<li>

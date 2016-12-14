@@ -1,85 +1,153 @@
-<!--Video Section-->
-{{> nav }}
+<div>
+	{{> nav }}
+</div>
+<div class="container">
+	<div class="row profile">
+		<div class="col-xs-3">
+			{{> sidebar }}
+		</div>
+		<div class="col-xs-9">
+			<div class="profile-content" id="background">
+		        <div id="login_header">
+					{{#unless logged_in}}
+						<p><a href="/users/signup-signin">Sign In or Sign Up</a></p>
+					{{/unless}}
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-<div class="container-fluid">
-    <div class="embed-responsive embed-responsive-16by9">
-    <p> this is main index page</p>
-        <div id="background">
-	         <div id="login_header">
-							<p>
-								{{#unless logged_in}}
-									<a href="/users/signup-signin">Sign In or Sign Up</a>
-								{{/unless}}
+					{{#if logged_in}}
 
-								{{#if logged_in}}
 
-									<div>
-										<p>Welcome {{email}}! </p>
-										<p>You are user {{username}}.</p>
-										<h3>Welcome {{email}}! </h3>
-										<p>You are user {{username}}.</p>
-										<p id='username'>{{username}}</p>
-										<div id="map" style="width:500px;height:500px"></div>
-									</div>
-
-							<script>
-								L.mapbox.accessToken = 'pk.eyJ1IjoibHVvbWVtZSIsImEiOiJjaXZyYWk1YXUwNGNwMnRuMjUyYTkwbWM5In0.BuIILDwp1QzgOYe0rhw5hQ';
-								var map = L.mapbox.map('map', 'mapbox.streets');
-								var x = document.getElementById("map");
-								var myLatLng;
-								var userMarker;
-
-								var myLayer = L.mapbox.featureLayer().addTo(map);
-									function error(err) {
-    									console.log('ERROR(' + err.code + '): ' + err.message);
-									};
-			
-							
-
-							var options = {
-   								 enableHighAccuracy: false,
-   								 timeout: 1000,
-   								 maximumAge: 0
-								};
+					<div class="panel panel-default">
+	                    <div class="panel-heading text-center">
+	                    	<h1 style="text-transform: capitalize;">Welcome {{username}}! </h1>							
+							<h3>Your email: {{email}}! </h3>
+							<p>Your latitude: {{lat}}.</p>							
+							<p>Your longitude: {{lng}}.</p>							
+							<p id='username'>{{username}}</p>
+	                        
+	                    </div>
+	                    <div class="panel-body">
+	                    	
+		                    	<div id="map" style="width: 100%;height: 500px;"></div>
+		                    	<div id='inputs'></div>
+								<div id='errors'></div>
+								<div id='directions'>
+								  <div id='routes'></div>
+								  <div id='instructions'></div>
+								</div>	                       
 								
-						function success(pos) {
-    					var crd = pos.coords;
-    					myLatLng = { lat: crd.latitude, lng: crd.longitude };
-    					console.log(myLatLng);
-    					var username = document.getElementById('username').textContent;
-    					var currentLocation = window.location.origin;
-    					var userNameCoords = {username: username, coords: myLatLng};
-    					if(userMarker){
-    					userMarker.setLatLng( newLatLng = new L.LatLng(myLatLng.lat,myLatLng.lng));
-    					}
-    					$.post('/geolocator', userNameCoords, function(req,res) {
-    						console.log(res);
-    					});
-							};
+						<script>
+						L.mapbox.accessToken = 'pk.eyJ1IjoiZGltYXNvbCIsImEiOiJjaXZycnFjeG8wM3lwMnpxdGR2ZDc1emU3In0.I-hsvy9AtsWfZozW0-BRjA';
+						var map = L.mapbox.map('map','mapbox.streets')
+								.addControl(L.mapbox.geocoderControl('mapbox.places', {
+								        autocomplete: true }))
+								.setView([34.17, -118.51],10);
+						var userMarker;
+						var isFound = false;
+						var coordinatesUser;
+							
+						
+						var myLayer = L.mapbox.featureLayer().addTo(map);
 
-						function successCurrent(data){
-							userMarker =	L.marker([data.coords.latitude, data.coords.longitude]).addTo(map);
+
+						// This uses the HTML5 geolocation API, which is available on
+						// most mobile browsers and modern browsers, but not in Internet Explorer
+						//
+						// See this chart of compatibility for details:
+						// http://caniuse.com/#feat=geolocation
+						if (!navigator.geolocation) {
+						    map.innerHTML = 'Please Allow Geolocation';
+						} else {
+								  map.locate({watch:true, timeout: 1000, frequency:1});						   
 						}
 
-				document.addEventListener('DOMContentLoaded', function position() {
-   				 navigator.geolocation.watchPosition(success, error, options),
-   				 navigator.geolocation.getCurrentPosition(successCurrent)
-				});
+						// Once we've got a position, zoom and center the map
+						// on it, and add a single marker.
+						map.on('locationfound', function(e) {
 
-									</script>
-			
-								{{/if}}
-							</p>
-						</div>
+							var username = document.getElementById('username').textContent;
+							coordinatesUser = {latitude: e.latitude,
+											  longitude: e.longitude,
+											   username};
+							console.log('Users Coords' +coordinatesUser);
+						    map.fitBounds(e.bounds);
+						    map.setZoom(11);
+						    myLayer.on('mouseover', function(e) {
+							    e.layer.openPopup();
+							});
+							myLayer.on('mouseout', function(e) {
+							    e.layer.closePopup();
+							});
+						isFound = true;
+						   
+						   		if(isFound === true){
+						$.post('/geolocator', coordinatesUser, function(req,res) {
+    						console.log('Post request' +  res);
+    					});
+
+						}
+						if(userMarker){
+							userMarker.setLatLng( newLatLng = new L.LatLng(coordinatesUser.latitude, coordinatesUser.longitude));
+						
+						}
+						});
+					
+						
+						// move the attribution control out of the way
+						map.attributionControl.setPosition('bottomleft');
+
+						// create the initial directions object, from which the layer
+						// and inputs will pull data.
+						var directions = L.mapbox.directions();
+
+						var directionsLayer = L.mapbox.directions.layer(directions)
+						    .addTo(map);
+
+						var directionsInputControl = L.mapbox.directions.inputControl('inputs', directions)
+						    .addTo(map);
+
+						var directionsErrorsControl = L.mapbox.directions.errorsControl('errors', directions)
+						    .addTo(map);
+
+						var directionsRoutesControl = L.mapbox.directions.routesControl('routes', directions)
+						    .addTo(map);
+
+						var directionsInstructionsControl = L.mapbox.directions.instructionsControl('instructions', directions)
+						    .addTo(map);
+
+						// If the user chooses not to allow their location
+						// to be shared, display an error message.
+						map.on('locationerror', function() {
+						    map.innerHTML = 'Position could not be found';
+						});
+						$(document).ready(function(){
+
+						userMarker = L.marker([0, 0]).addTo(map);
+
+						$.get('/loggedinusers', function(data){
+							console.log(data);
+						})
+
+						});
+						</script>
+							
+
+	                    </div> <!--panel-body-->
+	                </div>
+
+					{{/if}}
 				</div>
-    </div>          
+			</div>
+	    </div>          
+	</div>
+
+
+		{{#unless logged_in}}
+		  <p>
+		    You must login to add a person.
+		  </p>
+		{{/unless}}
 </div>
 
-{{#unless logged_in}}
-  <p>
-    You must login to add a person.
-  </p>
-{{/unless}}
+
 
 

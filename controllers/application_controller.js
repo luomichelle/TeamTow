@@ -19,13 +19,23 @@ router.get('/', function(req, res) {
 router.post('/geolocator',function(req,res){
 	console.log(req.body);
 	var userName = req.body.username;
-	var lat = req.body['coords[lat]'];
-	var lng = req.body['coords[lng]'];
-	User.update({username:userName}, {latitude:lat,longitude: lng,loggedin:true}, 
+	var lat = req.body.latitude;
+	var lng = req.body.longitude;
+	User.update({username:userName}, {latitude:lat,longitude:lng,loggedin:true}, 
     function(err, num) {
         console.log("updated "+userName);
     });
 
+})
+
+router.get('/loggedinusers', function(req,res){
+	User.find({loggedin : true}, function(err,data) {
+		if (err) {
+			throw err;
+		}
+		console.log(data);
+		res.json(data);
+	})
 })
 
 
@@ -34,6 +44,7 @@ router.post('/geolocator',function(req,res){
 //         clientId: req.query.clientId
 //     });
 // });
+
 
 // app.get('/truck', function(req, res) {
 //     res.render('truck', {
