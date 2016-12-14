@@ -7,22 +7,16 @@ var axios = require('axios');
 // var HangpersonDisplay = require('./HangpersonDisplay');
 
 var Home = React.createClass({
-	getInitialState: function() {
-		return {
-			game: {
-				partialWord: [],
-				guessed: []
-			}
-		}
-	},
+	// getInitialState: function() {
+	// 	return {
+	// 		game: {
+	// 			partialWord: [],
+	// 			guessed: []
+	// 		}
+	// 	}
+	// },
 	componentWillMount: function() {
 		var self = this;
-		// axios.get('/hangperson/current')
-		// 	.then(function(result) {
-		// 		self.setState({
-		// 			game: result.data
-		// 		});
-		// 	});
 	},
 	render: function() {
 		return (
