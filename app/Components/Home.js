@@ -7,22 +7,16 @@ var axios = require('axios');
 // var HangpersonDisplay = require('./HangpersonDisplay');
 
 var Home = React.createClass({
-	getInitialState: function() {
-		return {
-			game: {
-				partialWord: [],
-				guessed: []
-			}
-		}
-	},
+	// getInitialState: function() {
+	// 	return {
+	// 		game: {
+	// 			partialWord: [],
+	// 			guessed: []
+	// 		}
+	// 	}
+	// },
 	componentWillMount: function() {
 		var self = this;
-		// axios.get('/hangperson/current')
-		// 	.then(function(result) {
-		// 		self.setState({
-		// 			game: result.data
-		// 		});
-		// 	});
 	},
 	render: function() {
 		return (
@@ -40,6 +34,9 @@ var Home = React.createClass({
 						</div>
 						<div className="collapse navbar-collapse navbar-ex1-collapse">
 							<ul className="nav navbar-nav">
+								<li>
+									<a className="truckClass" href="/truck/signup-signin">TOW TRUCK</a>
+								</li>
 								<li>
 									<a className="page-scroll" href="/users/signup-signin">Sign In</a>
 								</li>
