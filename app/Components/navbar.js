@@ -2,8 +2,8 @@ var React 	= require('react');
 var axios 	= require('axios');
 var signIn 	= require('./signIn.js');
 var signUp 	= require('./signUp.js');
-var signUp 	= require('./contact.js');
-var signUp 	= require('./profile.js');
+var Contact	= require('./contact.js');
+var Profile	= require('./profile.js');
 
 // Component for the entire Navbar:
 var Navbar = React.createClass({
