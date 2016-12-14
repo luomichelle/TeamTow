@@ -6,7 +6,9 @@ var user = module.exports = {
   schema: new Schema({
     username: {type: String, required: true, unique: true},
     password_hash: {type: String, required: true},
+    account_role: {type: String, default: "client"},
     email: {type: String, required: true},
+    phone: {type: Number, default: 0},
     firstName: {type: String},
     lastName: {type: String},
     latitude: {type: Number, default: 0},
