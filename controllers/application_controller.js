@@ -33,11 +33,16 @@ router.get('/loggedinusers', function(req,res){
 		if (err) {
 			throw err;
 		}
-		console.log(data);
 		res.json(data);
 	})
 })
 
+router.get('/truckUserCoords/:truckName?', function(req,res){
+	var truckName = req.params.truckName;
+	User.find({username : truckName}, function(err,data){
+		res.json(data);
+	})
+})
 
 // router.get('/client', function(req, res) { 
 //     res.render('client', {
