@@ -41,7 +41,7 @@ var Home = React.createClass({
 						<div className="collapse navbar-collapse navbar-ex1-collapse">
 							<ul className="nav navbar-nav">
 								<li>
-									<a className="truckClass" href="/truck/signup-signin">TOW TRUCK</a>
+									<a className="truckClass" href="/trucks/signup-signin">TOW TRUCK</a>
 								</li>
 								<li>
 									<a className="page-scroll" href="/users/signup-signin">Sign In</a>
@@ -53,10 +53,10 @@ var Home = React.createClass({
 									<a className="page-scroll" href="#contact">Contact</a>
 								</li>
 								<li>
-									<a href="#"><span class="glyphicon glyphicon-user"></span> Profile</a>
+									<a href="#"><span className="glyphicon glyphicon-user"></span> Profile</a>
 								</li>
 								 <li>
-									<a href="/users/sign-out"><span class="glyphicon glyphicon-log-in"></span> Sign Out</a>
+									<a href="/users/sign-out"><span className="glyphicon glyphicon-log-in"></span> Sign Out</a>
 								</li>
 							</ul>
 						</div>
