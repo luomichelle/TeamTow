@@ -33,7 +33,12 @@
 								<div id='directions'>
 								  <div id='routes'></div>
 								  <div id='instructions'></div>
-								</div>	                       
+								</div>	
+								<div style='width:200px;height:200px'>
+									<h6> Online Users </h6>
+									<ul id="onlineUsers">
+									</ul>
+								</div>                       
 								
 						<script>
 						L.mapbox.accessToken = 'pk.eyJ1IjoiZGltYXNvbCIsImEiOiJjaXZycnFjeG8wM3lwMnpxdGR2ZDc1emU3In0.I-hsvy9AtsWfZozW0-BRjA';
@@ -42,6 +47,8 @@
 								        autocomplete: true }))
 								.setView([34.17, -118.51],10);
 						var userMarker;
+						var truckMarker;
+						var trucks;
 						var isFound = false;
 						var coordinatesUser;
 							
@@ -68,7 +75,7 @@
 							coordinatesUser = {latitude: e.latitude,
 											  longitude: e.longitude,
 											   username};
-							console.log('Users Coords' +coordinatesUser);
+							//console.log(coordinatesUser);
 						    map.fitBounds(e.bounds);
 						    map.setZoom(11);
 						    myLayer.on('mouseover', function(e) {
@@ -81,7 +88,7 @@
 						   
 						   		if(isFound === true){
 						$.post('/geolocator', coordinatesUser, function(req,res) {
-    						console.log('Post request' +  res);
+    						//console.log('Post request' +  res);
     					});
 
 						}
@@ -122,10 +129,29 @@
 						$(document).ready(function(){
 
 						userMarker = L.marker([0, 0]).addTo(map);
+						truckMarker = L.marker([0,0]).addTo(map);
 
 						$.get('/loggedinusers', function(data){
-							console.log(data);
+							//console.log(data)
+							for(i=0;i<data.length;i++){
+								$('#onlineUsers').append('<li>' +'<button id="truckUser" value =' +data[i].username + '>' + data[i].username + '</button>' + '</li>')
+							};
 						})
+
+						function getOnClick(username){
+							$.get('/truckUserCoords'+'/' + username, function(data){
+								console.log(data[0]);
+							if(truckMarker){
+							truckMarker.setLatLng( newLatLng = new L.LatLng(data[0].latitude, data[0].longitude));		
+							}
+							})
+						}
+
+						$('body').on('click', '#truckUser', function(){
+							trucks = $(this).val();
+							setInterval(function(){getOnClick(trucks)},10000);
+
+						});
 
 						});
 						</script>
