@@ -4,6 +4,7 @@ var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
 var User = require('../models').User;
+var Request = require('../models').Request;
 
 
 // router.get('/', function(req, res) {
@@ -42,6 +43,20 @@ router.get('/truckUserCoords/:truckName?', function(req,res){
 	User.find({username : truckName}, function(err,data){
 		res.json(data);
 	})
+})
+
+router.post('/helpRequest', function(req,res){
+	console.log(req.body)
+	var request = new Request({
+   	username: req.body.username,
+    latitude: req.body.latitude,
+    longitude: req.body.longitude
+  })
+	request.save(function(err,post){
+		if (err) {console.log(err)}
+		res.send('success');	
+
+	}) 
 })
 
 // router.get('/client', function(req, res) { 

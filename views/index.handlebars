@@ -20,8 +20,8 @@
 	                    <div class="panel-heading text-center">
 	                    	<h1 style="text-transform: capitalize;">Welcome {{username}}! </h1>							
 							<h3>Your email: {{email}}! </h3>
-							<p>Your latitude: {{lat}}.</p>							
-							<p>Your longitude: {{lng}}.</p>							
+			{{!-- 				<p>Your latitude: {{lat}}.</p>							
+							<p>Your longitude: {{lng}}.</p>	 --}}						
 							<p id='username'>{{username}}</p>
 	                        
 	                    </div>
@@ -30,11 +30,11 @@
 		                    	<div id="map" style="width: 100%;height: 500px;"></div>
 		                    	<div id='inputs'></div>
 								<div id='errors'></div>
-								<div id='directions'>
 								  <div id='routes'></div>
 								  <div id='instructions'></div>
 								</div>	
 								<div style='width:200px;height:200px'>
+									<button id="customerRequest">Call a truck</button>
 									<h6> Online Users </h6>
 									<ul id="onlineUsers">
 									</ul>
@@ -48,6 +48,7 @@
 								.setView([34.17, -118.51],10);
 						var userMarker;
 						var truckMarker;
+						var username;
 						var trucks;
 						var isFound = false;
 						var coordinatesUser;
@@ -72,10 +73,10 @@
 						// on it, and add a single marker.
 						map.on('locationfound', function(e) {
 
-							var username = document.getElementById('username').textContent;
+							username = document.getElementById('username').textContent;
 							coordinatesUser = {latitude: e.latitude,
 											  longitude: e.longitude,
-											   username};
+											   username}
 							//console.log(coordinatesUser);
 						    map.fitBounds(e.bounds);
 						    map.setZoom(11);
@@ -105,22 +106,22 @@
 
 						// create the initial directions object, from which the layer
 						// and inputs will pull data.
-						var directions = L.mapbox.directions();
+						// var directions = L.mapbox.directions();
 
-						var directionsLayer = L.mapbox.directions.layer(directions)
-						    .addTo(map);
+						// var directionsLayer = L.mapbox.directions.layer(directions)
+						//     .addTo(map);
 
-						var directionsInputControl = L.mapbox.directions.inputControl('inputs', directions)
-						    .addTo(map);
+						// var directionsInputControl = L.mapbox.directions.inputControl('inputs', directions)
+						//     .addTo(map);
 
-						var directionsErrorsControl = L.mapbox.directions.errorsControl('errors', directions)
-						    .addTo(map);
+						// var directionsErrorsControl = L.mapbox.directions.errorsControl('errors', directions)
+						//     .addTo(map);
 
-						var directionsRoutesControl = L.mapbox.directions.routesControl('routes', directions)
-						    .addTo(map);
+						// var directionsRoutesControl = L.mapbox.directions.routesControl('routes', directions)
+						//     .addTo(map);
 
-						var directionsInstructionsControl = L.mapbox.directions.instructionsControl('instructions', directions)
-						    .addTo(map);
+						// var directionsInstructionsControl = L.mapbox.directions.instructionsControl('instructions', directions)
+						//     .addTo(map);
 
 						// If the user chooses not to allow their location
 						// to be shared, display an error message.
@@ -165,6 +166,17 @@
 						});
 
 						});
+
+						$('#customerRequest').on('click', function(){
+							var helpRequest = {
+								'username': username,
+								'coordinatesUser': coordinatesUser
+							}
+							console.log(helpRequest)
+							$.post('/helpRequest', helpRequest , function(data) {
+							
+							});
+						})
 						</script>
 							
 
