@@ -36,13 +36,13 @@ var Navbar = React.createClass({
 								<a className="truckClass" href="/truck/signup-signin">TOW TRUCK</a>
 							</li>
 							<li>
-								<a onClick={this.dropdown} className="page-scroll" href="/users/signup-signin">Sign In</a>
+								<a onClick={this.dropdown} className="page-scroll" href="/users/signup-signin"><span className="glyphicon glyphicon-log-in"></span> Sign In</a>
 							</li>
 							<li>
-								<a onClick={this.dropdown} className="page-scroll" href="/users/signup">Create Account</a>
+								<a onClick={this.dropdown} className="page-scroll" href="/users/signup"><span className="glyphicons glyphicons-plus"></span> Create Account</a>
 							</li>
 							<li>
-								<a onClick={this.popup} className="page-scroll" href="#contact">Contact</a>
+								<a onClick={this.popup} className="page-scroll" href="#contact"><span className="glyphicon glyphicon-envelope"></span> Contact</a>
 							</li>
 							<li>
 								<a href="#"><span className="glyphicon glyphicon-user"></span> Profile</a>

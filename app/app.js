@@ -10,8 +10,8 @@ var App = React.createClass({
 		return (
 			<div>
 				<Navbar />
-				
-
+				<Core />
+				<Footer />
 			</div>
 		);
 	}
