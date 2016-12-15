@@ -51,6 +51,7 @@
 						var trucks;
 						var isFound = false;
 						var coordinatesUser;
+						var coordinatesTruck;
 							
 						
 						var myLayer = L.mapbox.featureLayer().addTo(map);
@@ -127,9 +128,16 @@
 						    map.innerHTML = 'Position could not be found';
 						});
 						$(document).ready(function(){
+							var iconUser = L.icon({
+								iconUrl: 'http://www.icon100.com/up/2836/16/walking.png'
+							})
 
-						userMarker = L.marker([0, 0]).addTo(map);
-						truckMarker = L.marker([0,0]).addTo(map);
+							var iconTruck = L.icon({
+								iconUrl: 'http://www.icon100.com/up/4198/16/71-tow.png'
+							})
+
+						userMarker = L.marker([0, 0], {icon: iconUser}).addTo(map);
+						truckMarker = L.marker([0,0], {icon: iconTruck}).addTo(map);
 
 						$.get('/loggedinusers', function(data){
 							//console.log(data)
@@ -142,7 +150,11 @@
 							$.get('/truckUserCoords'+'/' + username, function(data){
 								console.log(data[0]);
 							if(truckMarker){
-							truckMarker.setLatLng( newLatLng = new L.LatLng(data[0].latitude, data[0].longitude));		
+								coordinatesTruck = {latitude: data[0].latitude,
+											  longitude:  data[0].longitude};
+
+							truckMarker.setLatLng( newLatLng = new L.LatLng(data[0].latitude, data[0].longitude));	
+
 							}
 							})
 						}
@@ -150,7 +162,6 @@
 						$('body').on('click', '#truckUser', function(){
 							trucks = $(this).val();
 							setInterval(function(){getOnClick(trucks)},10000);
-
 						});
 
 						});
