@@ -88,6 +88,7 @@ router.post("/sign-in", function(req, res) {
     var user = users[0];
     user.validatePassword(req.body.password, function(err, success) {
       if(err) throw err;
+          if(err) throw new Error("Something is wrong with your account.");
 
       if(success) {
 
