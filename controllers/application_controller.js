@@ -46,17 +46,18 @@ router.get('/truckUserCoords/:truckName?', function(req,res){
 })
 
 router.post('/helpRequest', function(req,res){
-	console.log(req.body)
-	var request = new Request({
-   	username: req.body.username,
-    latitude: req.body.latitude,
-    longitude: req.body.longitude
-  })
-	request.save(function(err,post){
-		if (err) {console.log(err)}
-		res.send('success');	
+	var userRequest = req.body;
+	console.log(userRequest);
+	 // var request = new Request({
+  //  	username: req.body.username,
+  //   latitude: req.body[coordinatesUser].latitude,
+  //   longitude: req.body[coordinatesUser].longitude
+  // })
+	 // request.save(function(err,post){
+	 // 	if (err) {console.log(err)}
+	 // 	res.send('success');	
 
-	}) 
+	 // }) 
 })
 
 // router.get('/client', function(req, res) { 
