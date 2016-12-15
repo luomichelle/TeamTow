@@ -34,11 +34,13 @@
 								  <div id='instructions'></div>
 								</div>	
 								<div style='width:200px;height:200px'>
-									<button id="customerRequest">Call a truck</button>
-									<h6> Online Users </h6>
-									<ul id="onlineUsers">
-									</ul>
-								</div>                       
+								    <form role="form" action="/users/user-request" method="POST" class="user-request-form">
+										<button type="submit" class="btn" id="customerRequest">Call a truck</button>
+									</form>
+										<h6> Online Users </h6>
+										<ul id="onlineUsers">
+										</ul>
+									</div>                       
 								
 						<script>
 						L.mapbox.accessToken = 'pk.eyJ1IjoiZGltYXNvbCIsImEiOiJjaXZycnFjeG8wM3lwMnpxdGR2ZDc1emU3In0.I-hsvy9AtsWfZozW0-BRjA';
