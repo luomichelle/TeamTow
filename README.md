@@ -1,6 +1,5 @@
 use command 'webpack -w' if you have updated anything in HTML/CSS.
-
-
+mongoimport --db teamtow --collection trucks --drop --file ./trucks.json
 
 
 
