@@ -7,8 +7,13 @@ var user = module.exports = {
     username: {type: String, required: true, unique: true},
     password_hash: {type: String, required: true},
     email: {type: String, required: true},
+    account_role: {type: String, default: "truck"},
+    phone: {type: Number, default: 0},
     firstName: {type: String},
-    lastName: {type: String}
+    lastName: {type: String},
+    latitude: {type: Number, default: 0},
+    longitude: {type: Number, default:0},
+    loggedin: {type: Boolean, default:false}
   })
 };
 
