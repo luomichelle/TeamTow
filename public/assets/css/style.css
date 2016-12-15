@@ -1,5 +1,5 @@
 body {
-  padding: 50px;
+  /*padding: 50px;*/
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-image: url('/assets/img/lego_tow.jpg');
   
@@ -8,14 +8,28 @@ body {
   /*background-position: center center;*/
 
 }
+.truckbtn {
+  margin: 15px 5px 5px 10px;
+}
+.logotxt {
+  font-size: 40px;
+
+}
+
+.signup-div {
+  margin-top: 250px;
+  width: 33%;
+  float: right;
+}
+
 .navbar {
-  background-color: black;
+  background-color: white;
   color: #74baed;
-  padding-bottom: 15px;
+  padding-bottom: 5px;
   border: 0;
 }
 .navbar-brand {
-	font: 30px Helvetica, Arial, sans-serif;
+	font: 40px Helvetica, Arial, sans-serif;
 
 }
 .navbar-ex1-collapse {
@@ -30,6 +44,9 @@ a {
 .thumbnail img{        
    max-height: 147px;
 }
+
+
+
 
 /*-----------Mapbox direction*/
 #inputs,
