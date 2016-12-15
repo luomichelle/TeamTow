@@ -1,17 +1,17 @@
 var React 	= require('react');
 
-// The component for the users' profiles:
-var Profile = React.createClass({
+// The component for the signUp dropdown:
+var CreateAccount = React.createClass({
 	componentWillMount: function() {
 		var self = this;
 	},
 	render: function() {
 		return (
-			<div>
-
+			<div className="">
+				
 			</div>
 		);
 	}
 });
 
-module.exports = Profile;
+module.exports = CreateAccount;

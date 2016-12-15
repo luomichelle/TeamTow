@@ -1,14 +1,20 @@
-var React 	= require('react');
-var axios 	= require('axios');
-var signIn 	= require('./signIn.js');
-var signUp 	= require('./signUp.js');
-var Contact	= require('./contact.js');
-var Profile	= require('./profile.js');
+var React 			= require('react');
+var axios 			= require('axios');
+var SignIn 			= require('./signIn.js');
+var CreateAccount	= require('./createAccount.js');
+var Contact			= require('./contact.js');
+var Profile			= require('./profile.js');
 
 // Component for the entire Navbar:
 var Navbar = React.createClass({
 	componentWillMount: function() {
 		var self = this;
+	},
+	dropdown: function() {
+		return alert('dropdown function is working');
+	},
+	popup: function() {
+		return alert('popup function is working');
 	},
 	render: function() {
 		return (
@@ -30,19 +36,19 @@ var Navbar = React.createClass({
 								<a className="truckClass" href="/truck/signup-signin">TOW TRUCK</a>
 							</li>
 							<li>
-								<a className="page-scroll" href="/users/signup-signin">Sign In</a>
+								<a onClick={this.dropdown} className="page-scroll" href="/users/signup-signin">Sign In</a>
 							</li>
 							<li>
-								<a className="page-scroll" href="/users/signup">New User</a>
+								<a onClick={this.dropdown} className="page-scroll" href="/users/signup">Create Account</a>
 							</li>
 							<li>
-								<a className="page-scroll" href="#contact">Contact</a>
+								<a onClick={this.popup} className="page-scroll" href="#contact">Contact</a>
 							</li>
 							<li>
-								<a href="#"><span class="glyphicon glyphicon-user"></span> Profile</a>
+								<a href="#"><span className="glyphicon glyphicon-user"></span> Profile</a>
 							</li>
 							 <li>
-								<a href="/users/sign-out"><span class="glyphicon glyphicon-log-in"></span> Sign Out</a>
+								<a href="/users/sign-out"><span className="glyphicon glyphicon-log-out"></span> Sign Out</a>
 							</li>
 						</ul>
 					</div>

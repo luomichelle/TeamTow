@@ -6,9 +6,7 @@ var Contact = React.createClass({
 		var self = this;
 	},
 	render: function() {
-		return (
-			
-		);
+		
 	}
 });
 
