@@ -129,15 +129,13 @@
 						    map.innerHTML = 'Position could not be found';
 						});
 						$(document).ready(function(){
-							var iconUser = L.icon({
-								iconUrl: 'http://www.icon100.com/up/2836/16/walking.png'
-							})
+						
 
 							var iconTruck = L.icon({
 								iconUrl: 'http://www.icon100.com/up/4198/16/71-tow.png'
 							})
 
-						userMarker = L.marker([0, 0], {icon: iconUser}).addTo(map);
+						userMarker = L.marker([0, 0]).addTo(map);
 						truckMarker = L.marker([0,0], {icon: iconTruck}).addTo(map);
 
 						$.get('/loggedinusers', function(data){
