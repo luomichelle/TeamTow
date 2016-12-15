@@ -50,8 +50,8 @@ router.post('/helpRequest', function(req,res){
 	console.log(userRequest);
 	 var request = new Request({
    	username: req.body.username,
-     latitude: req.body[coordinatesUser].latitude,
-     longitude: req.body[coordinatesUser].longitude
+     latitude: req.body.latitude,
+     longitude: req.body.longitude
    })
 	  request.save(function(err,post){
 	  	if (err) {console.log(err)}

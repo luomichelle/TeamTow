@@ -169,12 +169,13 @@
 
 						$('#customerRequest').on('click', function(){
 							var helpRequest = {
-								'username': username,
-								'coordinatesUser': coordinatesUser
+								username: username,
+								latitude: coordinatesUser.latitude,
+								longitude: coordinatesUser.longitude
 							}
 							console.log(helpRequest)
 							$.post('/helpRequest', helpRequest , function(data) {
-							
+							console.log(data);
 							});
 						})
 						</script>
