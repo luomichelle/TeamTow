@@ -127,59 +127,6 @@ router.get("/sign-out", function(req,res) {
 
 
 
-//test for sending request from USER SIDE
-
-router.get("/request-for-help", function(req,res) {
-    User.find({email: req.body.email}, function(err, users) {
-
-      var requestTime = new Date();
-      var requestId = new ObjectID; //Generate unique ID for the request
-
-
-
-      req.session.logged_in = true;
-      // the username to the session
-      req.session.username = user.username;
-      // and the user's email.
-      req.session.user_email = user.email;
-
-      req.session.firstName = user.firstName;
-
-      req.session.longitude = user.longitude;
-
-     req.session.latitude = user.latitude;
-
-
-
-
-
-});
-
-
-
-function fetchNearestTrucks(db, coordinates, callback) {
-
-    Truck.createIndex({"location": "2dsphere"}, function() {
-        Truck.find({
-                $near: {
-                    $geometry: {
-                        type: "Point",
-                        coordinates: longitude,latitude
-                    },
-                    $maxDistance: 2000
-                }
-            }
-        }).toArray(function(err, results) {
-            if (err) {
-                console.log(err)
-            } else {
-                callback(results);
-            }
-        });
-    });
-}
-
-
 
 
 
