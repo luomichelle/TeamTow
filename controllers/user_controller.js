@@ -3,6 +3,7 @@ var router = express.Router();
 // var pwUtil = require('../helpers/password');
 var bcrypt = require('bcryptjs');
 var User = require('../models').User;
+var Truck = require('../models').Truck;
 
 //this is the users_controller.js file
 router.get('/signup-signin', function(req,res) {
@@ -122,5 +123,13 @@ router.get("/sign-out", function(req,res) {
      res.redirect("/")
   })
 });
+
+
+
+
+
+
+
+
 
 module.exports = router;
