@@ -26,6 +26,13 @@ router.get('/index', function(req,res) {
 });
 
 
+router.get('/test', function(req,res) {
+  res.render('trucks/test', {
+    layout: 'main-registration'
+  });
+});
+
+
 router.post("/sign-up", function(req, res) {
   User.find({
     email: req.body.email
