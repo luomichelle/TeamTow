@@ -31,7 +31,7 @@ var Home = React.createClass({
 								<span className="icon-bar"></span>
 								<span className="icon-bar"></span>
 							</button>
-							<a className="navbar-brand page-scroll" href="#">Team Tow</a>
+							<a className="navbar-brand page-scroll" href="/">Team Tow</a>
 						</div>
 						
 						<div className="collapse navbar-collapse navbar-ex1-collapse">

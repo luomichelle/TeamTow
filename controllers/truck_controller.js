@@ -19,12 +19,17 @@ router.get('/truck', function(req,res) {
   });
 });
 
-router.get('/index', function(req,res) {
-  res.render('trucks/index', {
+// router.get('/index', function(req,res) {
+//   res.render('trucks/index', {
+//     layout: 'main-registration'
+//   });
+// });
+
+router.get('/test', function(req,res) {
+  res.render('trucks/test', {
     layout: 'main-registration'
   });
 });
-
 
 router.post("/sign-up", function(req, res) {
   User.find({
