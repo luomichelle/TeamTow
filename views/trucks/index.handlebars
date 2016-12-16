@@ -19,9 +19,7 @@
 					<div class="panel panel-default">
 	                    <div class="panel-heading text-center">
 	                    	<h1 style="text-transform: capitalize;">Welcome {{username}}! </h1>							
-							<h3>Your email: {{email}}! </h3>
-			{{!-- 				<p>Your latitude: {{lat}}.</p>							
-							<p>Your longitude: {{lng}}.</p>	 --}}						
+							<h3>Your email: {{email}}!</h3>						
 							<p id='username'>{{username}}</p>
 	                        
 	                    </div>
@@ -91,7 +89,7 @@
 						isFound = true;
 						   
 						   		if(isFound === true){
-						$.post('/geolocator', coordinatesUser, function(req,res) {
+						$.post('/geolocatorTruck', coordinatesUser, function(req,res) {
     						//console.log('Post request' +  res);
     					});
 
