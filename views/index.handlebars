@@ -34,13 +34,16 @@
 								  <div id='instructions'></div>
 								</div>	
 								<div style='width:200px;height:200px'>
-								    <form role="form" action="/users/user-request" method="POST" class="user-request-form">
+								  
 										<button type="submit" class="btn" id="customerRequest">Call a truck</button>
-									</form>
 										<h6> Online Users </h6>
 										<ul id="onlineUsers">
 										</ul>
 									</div>                       
+								<div style="width:200px;height:200px">
+								<h3> Company: </h3> <span id="company"> </span> </br>
+								<h3> Request Status: </h3> <span id="requestStatus"> </span> </br>
+								</div>
 								
 						<script>
 						L.mapbox.accessToken = 'pk.eyJ1IjoiZGltYXNvbCIsImEiOiJjaXZycnFjeG8wM3lwMnpxdGR2ZDc1emU3In0.I-hsvy9AtsWfZozW0-BRjA';
@@ -131,24 +134,32 @@
 						    map.innerHTML = 'Position could not be found';
 						});
 						$(document).ready(function(){
-							var iconUser = L.icon({
-								iconUrl: 'http://www.icon100.com/up/2836/16/walking.png'
-							})
+						
 
 							var iconTruck = L.icon({
 								iconUrl: 'http://www.icon100.com/up/4198/16/71-tow.png'
 							})
 
-						userMarker = L.marker([0, 0], {icon: iconUser}).addTo(map);
+						userMarker = L.marker([0, 0]).addTo(map);
 						truckMarker = L.marker([0,0], {icon: iconTruck}).addTo(map);
 
 						$.get('/loggedinusers', function(data){
 							//console.log(data)
 							for(i=0;i<data.length;i++){
-								$('#onlineUsers').append('<li>' +'<button id="truckUser" value =' +data[i].username + '>' + data[i].username + '</button>' + '</li>')
+								$('#onlineUsers').append('<li>' +'<value =' +data[i].username + '>' + data[i].username + '</button>' + '</li>')
 							};
 						})
 
+
+						// $('body').on('click', '#truckUser', function(){
+						// 	trucks = $(this).val();
+						// 	setInterval(function(){getOnClick(trucks)},10000);
+						// });
+
+						});
+
+
+						
 						function getOnClick(username){
 							$.get('/truckUserCoords'+'/' + username, function(data){
 								console.log(data[0]);
@@ -162,12 +173,18 @@
 							})
 						}
 
-						$('body').on('click', '#truckUser', function(){
-							trucks = $(this).val();
-							setInterval(function(){getOnClick(trucks)},10000);
-						});
+						function requestStatus(){
+							console.log('hit')
+							$.get('/getStatus'+'/'+ username, function(data){
+							console.log(data);
+								$('#company').html(data[0].driverid)
+								if(data[0].resolved === true){
+								$('#requestStatus').html('On the Way');
+								}
+								setInterval(function(){getOnClick(data[0].driverid)},10000);
+							})
 
-						});
+						}
 
 						$('#customerRequest').on('click', function(){
 							var helpRequest = {
@@ -179,7 +196,11 @@
 							$.post('/helpRequest', helpRequest , function(data) {
 							console.log(data);
 							});
+
+							setInterval(function(){requestStatus()}, 10000);
 						})
+
+						
 						</script>
 							
 
