@@ -64,7 +64,7 @@ router.post("/sign-up", function(req, res) {
         req.session.lastName = truck.lastName;
 
 
-        res.render('index', {
+        res.render('trucks/index', {
           email: req.session.user_email,
           logged_in: req.session.logged_in,
           username: req.session.username,
@@ -102,7 +102,7 @@ router.post("/sign-in", function(req, res) {
 
         req.session.lastName = user.lastName;
 
-        res.render('index', {
+        res.render('trucks/index', {
           email: req.session.user_email,
           logged_in: req.session.logged_in,
           username: req.session.username,

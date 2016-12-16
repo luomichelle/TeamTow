@@ -19,9 +19,7 @@
 					<div class="panel panel-default">
 	                    <div class="panel-heading text-center">
 	                    	<h1 style="text-transform: capitalize;">Welcome {{username}}! </h1>							
-							<h3>Your email: {{email}}! </h3>
-			{{!-- 				<p>Your latitude: {{lat}}.</p>							
-							<p>Your longitude: {{lng}}.</p>	 --}}						
+							<h3>Your email: {{email}}!</h3>						
 							<p id='username'>{{username}}</p>
 	                        
 	                    </div>
@@ -34,12 +32,12 @@
 								  <div id='instructions'></div>
 								</div>	
 								<div style='width:200px;height:200px'>
-								    <form role="form" action="/users/user-request" method="POST" class="user-request-form">
+								{{!--     <form role="form" action="/users/user-request" method="POST" class="user-request-form">
 										<button type="submit" class="btn" id="customerRequest">Call a truck</button>
-									</form>
-										<h6> Online Users </h6>
-										<ul id="onlineUsers">
-										</ul>
+									</form> --}}
+										<h6> Requests</h6>
+										<div id="requests" style="overflow:scroll; width:600px; height:500px">
+										</div>
 									</div>                       
 								
 						<script>
@@ -90,16 +88,13 @@
 							});
 						isFound = true;
 						   
-						   		if(isFound === true){
-						$.post('/geolocator', coordinatesUser, function(req,res) {
+						if(isFound === true){
+						$.post('/geolocatorTruck', coordinatesUser, function(req,res) {
     						//console.log('Post request' +  res);
     					});
-
 						}
 						if(userMarker){
-							userMarker.setLatLng( newLatLng = new L.LatLng(coordinatesUser.latitude, coordinatesUser.longitude));
-						
-						}
+							userMarker.setLatLng( newLatLng = new L.LatLng(coordinatesUser.latitude, coordinatesUser.longitude))}
 						});
 					
 						
@@ -130,56 +125,47 @@
 						map.on('locationerror', function() {
 						    map.innerHTML = 'Position could not be found';
 						});
+
+							function requests(){
+								console.log('hit requests')
+							$.get('/requests', function(data){
+							//console.log(data)
+								$('#requests').empty();
+							for(i=0;i<data.length;i++){
+								$('#requests').append('<li>' +'<button id="requestUser" value =' + JSON.stringify(data[i]) + '>' + data[i].username + " "+ "Resolved:"+ +data[i].resolved + "  "+"Driver ID:"+ data[i].driverid +'</button>' + '</li>')
+							};
+						})
+						}
+
 						$(document).ready(function(){
 							var iconUser = L.icon({
-								iconUrl: 'http://www.icon100.com/up/2836/16/walking.png'
-							})
-
-							var iconTruck = L.icon({
 								iconUrl: 'http://www.icon100.com/up/4198/16/71-tow.png'
 							})
 
 						userMarker = L.marker([0, 0], {icon: iconUser}).addTo(map);
-						truckMarker = L.marker([0,0], {icon: iconTruck}).addTo(map);
 
-						$.get('/loggedinusers', function(data){
-							//console.log(data)
-							for(i=0;i<data.length;i++){
-								$('#onlineUsers').append('<li>' +'<button id="truckUser" value =' +data[i].username + '>' + data[i].username + '</button>' + '</li>')
-							};
-						})
+						setInterval(function(){requests()}, 5000);
 
-						function getOnClick(username){
-							$.get('/truckUserCoords'+'/' + username, function(data){
-								console.log(data[0]);
-							if(truckMarker){
-								coordinatesTruck = {latitude: data[0].latitude,
-											  longitude:  data[0].longitude};
+						});
 
-							truckMarker.setLatLng( newLatLng = new L.LatLng(data[0].latitude, data[0].longitude));	
-
+						$('body').on('click', '#requestUser', function(){
+							var usernameDetails = JSON.parse($(this).val());
+							var requestLat = usernameDetails.latitude;
+							var requestLng = usernameDetails.longitude;
+							var usernameUser = usernameDetails.username;
+							var requestDetails = {
+								lat: requestLat,
+								lng: requestLng,
+								usernameCompany: username,
+								usernameUser: usernameUser
 							}
+							console.log(requestDetails)
+							$.post('/userRequestAccepted', requestDetails, function(data){
+								console.log('accepted request');
+								 L.marker([requestDetails.lat, requestDetails.lng, 0]).addTo(map)
 							})
-						}
-
-						$('body').on('click', '#truckUser', function(){
-							trucks = $(this).val();
-							setInterval(function(){getOnClick(trucks)},10000);
-						});
-
-						});
-
-						$('#customerRequest').on('click', function(){
-							var helpRequest = {
-								username: username,
-								latitude: coordinatesUser.latitude,
-								longitude: coordinatesUser.longitude
-							}
-							console.log(helpRequest)
-							$.post('/helpRequest', helpRequest , function(data) {
-							console.log(data);
-							});
 						})
+
 						</script>
 							
 
