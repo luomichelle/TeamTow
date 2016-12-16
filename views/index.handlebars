@@ -1,12 +1,10 @@
 <div>
-	{{> nav }}
+	{{> nav-user }}
 </div>
 <div class="container">
 	<div class="row profile">
-		<div class="col-xs-3">
-			{{> sidebar }}
-		</div>
-		<div class="col-xs-9">
+		
+		<div class="col-sm-9">
 			<div class="profile-content" id="background">
 		        <div id="login_header">
 					{{#unless logged_in}}
@@ -210,6 +208,10 @@
 					{{/if}}
 				</div>
 			</div>
+			<div class="col-sm-3">
+				{{> sidebar }}
+			</div>
+		
 	    </div>          
 	</div>
 

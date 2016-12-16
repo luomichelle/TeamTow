@@ -22,7 +22,7 @@ var Home = React.createClass({
 		return (
 				<div> 
 				
-				<nav className="navbar navbar-default navbar-fixed-top" role="navigation">
+				<nav id="mainNav" className="navbar navbar-default navbar-fixed-top" role="navigation">
 					<div className="container">
 						<div className="navbar-header page-scroll">
 							<button type="button" className="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -53,7 +53,7 @@ var Home = React.createClass({
 									<a href="/users/sign-out"><span className="glyphicon glyphicon-log-in"></span> Sign Out</a>
 								</li>
 								<li>
-									<a className="btn btn-success btn-md truckbtn" href="/trucks/signup-signin">TOW TRUCK</a>
+									<a className="btn btn-success btn-sm truckbtn" href="/trucks/signup-signin">TOW TRUCK</a>
 								</li>
 							</ul>
 						</div>
