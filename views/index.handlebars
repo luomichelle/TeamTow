@@ -20,8 +20,8 @@
 	                    <div class="panel-heading text-center">
 	                    	<h1 style="text-transform: capitalize;">Welcome {{username}}! </h1>							
 							<h3>Your email: {{email}}! </h3>
-							<p>Your latitude: {{lat}}.</p>							
-							<p>Your longitude: {{lng}}.</p>							
+			{{!-- 				<p>Your latitude: {{lat}}.</p>							
+							<p>Your longitude: {{lng}}.</p>	 --}}						
 							<p id='username'>{{username}}</p>
 	                        
 	                    </div>
@@ -30,15 +30,17 @@
 		                    	<div id="map" style="width: 100%;height: 500px;"></div>
 		                    	<div id='inputs'></div>
 								<div id='errors'></div>
-								<div id='directions'>
 								  <div id='routes'></div>
 								  <div id='instructions'></div>
 								</div>	
 								<div style='width:200px;height:200px'>
-									<h6> Online Users </h6>
-									<ul id="onlineUsers">
-									</ul>
-								</div>                       
+								    <form role="form" action="/users/user-request" method="POST" class="user-request-form">
+										<button type="submit" class="btn" id="customerRequest">Call a truck</button>
+									</form>
+										<h6> Online Users </h6>
+										<ul id="onlineUsers">
+										</ul>
+									</div>                       
 								
 						<script>
 						L.mapbox.accessToken = 'pk.eyJ1IjoiZGltYXNvbCIsImEiOiJjaXZycnFjeG8wM3lwMnpxdGR2ZDc1emU3In0.I-hsvy9AtsWfZozW0-BRjA';
@@ -48,9 +50,11 @@
 								.setView([34.17, -118.51],10);
 						var userMarker;
 						var truckMarker;
+						var username;
 						var trucks;
 						var isFound = false;
 						var coordinatesUser;
+						var coordinatesTruck;
 							
 						
 						var myLayer = L.mapbox.featureLayer().addTo(map);
@@ -71,10 +75,10 @@
 						// on it, and add a single marker.
 						map.on('locationfound', function(e) {
 
-							var username = document.getElementById('username').textContent;
+							username = document.getElementById('username').textContent;
 							coordinatesUser = {latitude: e.latitude,
 											  longitude: e.longitude,
-											   username};
+											   username}
 							//console.log(coordinatesUser);
 						    map.fitBounds(e.bounds);
 						    map.setZoom(11);
@@ -127,9 +131,16 @@
 						    map.innerHTML = 'Position could not be found';
 						});
 						$(document).ready(function(){
+							var iconUser = L.icon({
+								iconUrl: 'http://www.icon100.com/up/2836/16/walking.png'
+							})
 
-						userMarker = L.marker([0, 0]).addTo(map);
-						truckMarker = L.marker([0,0]).addTo(map);
+							var iconTruck = L.icon({
+								iconUrl: 'http://www.icon100.com/up/4198/16/71-tow.png'
+							})
+
+						userMarker = L.marker([0, 0], {icon: iconUser}).addTo(map);
+						truckMarker = L.marker([0,0], {icon: iconTruck}).addTo(map);
 
 						$.get('/loggedinusers', function(data){
 							//console.log(data)
@@ -142,7 +153,11 @@
 							$.get('/truckUserCoords'+'/' + username, function(data){
 								console.log(data[0]);
 							if(truckMarker){
-							truckMarker.setLatLng( newLatLng = new L.LatLng(data[0].latitude, data[0].longitude));		
+								coordinatesTruck = {latitude: data[0].latitude,
+											  longitude:  data[0].longitude};
+
+							truckMarker.setLatLng( newLatLng = new L.LatLng(data[0].latitude, data[0].longitude));	
+
 							}
 							})
 						}
@@ -150,10 +165,21 @@
 						$('body').on('click', '#truckUser', function(){
 							trucks = $(this).val();
 							setInterval(function(){getOnClick(trucks)},10000);
-
 						});
 
 						});
+
+						$('#customerRequest').on('click', function(){
+							var helpRequest = {
+								username: username,
+								latitude: coordinatesUser.latitude,
+								longitude: coordinatesUser.longitude
+							}
+							console.log(helpRequest)
+							$.post('/helpRequest', helpRequest , function(data) {
+							console.log(data);
+							});
+						})
 						</script>
 							
 
