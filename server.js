@@ -24,7 +24,7 @@ app.use(methodOverride('_method'))
 app.use(session(
 	{ 
 		secret: 'app', 
-		cookie: { maxAge: 60000 },
+		cookie: { maxAge: null },
 		resave: true,
     saveUninitialized: true
 	}

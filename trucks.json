@@ -1,0 +1,80 @@
+{
+    "username" : "Los Angeles Towing Services",
+    "password_hash" : "$2a$10$ivwXrpOA1IgfBWi9YleXEu..zmjYUr3zZDNHzdxdpuK8cnPoAvEwi",
+    "email" : "example1@teamtow.com",
+    "business_name" : "Los Angeles Towing Services",
+    "loggedin" : true,
+    "latitude" : 34.047001,
+    "longitude" : -118.457824,
+    "phone" : "888-866-7379",
+    "account_role" : "truck"
+}
+{
+    "username" : "Tom's Towing",
+    "password_hash" : "$2a$10$ivwXrpOA1IgfBWi9YleXEu..zmjYUr3zZDNHzdxdpuK8cnPoAvEwi",
+    "email" : "example2@teamtow.com",
+    "business_name" : "Tom's Towing",
+    "loggedin" : true,
+    "latitude" : 34.034364,
+    "longitude" : -118.445458,
+    "phone" : "310-753-2550",
+    "account_role" : "truck"
+}
+{
+    "username" : "Fox Towing Los Angeles",
+    "password_hash" : "$2a$10$ivwXrpOA1IgfBWi9YleXEu..zmjYUr3zZDNHzdxdpuK8cnPoAvEwi",
+    "email" : "example3@teamtow.com",
+    "business_name" : "Fox Towing Los Angeles",
+    "loggedin" : true,
+    "latitude" : 34.075826, 
+    "longitude" : -118.362553,
+    "phone" : "(323) 798-9102",
+    "account_role" : "truck"
+}
+{
+    "username" : "Los Angeles Towing Services",
+    "password_hash" : "$2a$10$ivwXrpOA1IgfBWi9YleXEu..zmjYUr3zZDNHzdxdpuK8cnPoAvEwi",
+    "email" : "example4@teamtow.com",
+    "business_name" : "Los Angeles Towing Services",
+    "loggedin" : true,
+    "latitude" : 34.045650, 
+    "longitude" : -118.386318,
+    "phone" : "(800) 688-4011",
+    "account_role" : "truck"
+}
+{
+    "username" : "Pink Towing of Santa Monica",
+    "password_hash" : "$2a$10$ivwXrpOA1IgfBWi9YleXEu..zmjYUr3zZDNHzdxdpuK8cnPoAvEwi",
+    "email" : "example5@teamtow.com",
+    "business_name" : "Pink Towing of Santa Monica",
+    "loggedin" : false,
+    "latitude" : 34.055014, 
+    "longitude" : -118.399286,
+    "phone" : "(323) 487-9838",
+    "account_role" : "truck"
+}
+{
+    "username" : "AutoZone",
+    "password_hash" : "$2a$10$wK8PqLEzf.JBiYcSHhRRkuOVJ5lTVbf84liwDMbR2tGviYk4.q4Vm",
+    "email" : "example6@teamtow.com",
+    "business_name" : "AutoZone",
+    "loggedin" : true,
+    "latitude" : 334.087035, 
+    "longitude" : -118.134657,
+    "phone" : "(626) 284-7096",
+    "account_role" : "truck"
+}
+
+{
+    "username" : "example11",
+    "password_hash" : "$2a$10$wK8PqLEzf.JBiYcSHhRRkuOVJ5lTVbf84liwDMbR2tGviYk4.q4Vm",
+    "email" : "example11@gmail.com",
+    "firstName" : "example11",
+    "lastName" : "example11",
+    "loggedin" : false,
+    "longitude" : 0,
+    "latitude" : 0,
+    "phone" : 0,
+    "account_role" : "truck",
+    "__v" : 0
+}
