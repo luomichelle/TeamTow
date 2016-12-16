@@ -15,7 +15,9 @@ body {
   font-size: 40px;
 
 }
-
+.img-avatar {
+  max-width: 100px;
+}
 .signup-div {
   margin-top: 250px;
   width: 33%;
@@ -45,7 +47,9 @@ a {
    max-height: 147px;
 }
 
-
+.glyphicon.glyphicon-road {
+    font-size: 50px;
+}
 
 
 /*-----------Mapbox direction*/
@@ -60,8 +64,8 @@ a {
 
 #inputs {
     z-index: 10;
-    top: 263px;
-    left: 90px;
+    top: 12px;
+    left: 40px;
 }
 
 #directions {
@@ -88,10 +92,13 @@ a {
 .profile {
   margin: 40px 0;
 }
-
+.user-name {
+  text-transform: capitalize;
+}
 /* Profile sidebar */
 .profile-sidebar {
   padding: 20px 0 10px 0;
+  margin-top: 30px;
   background: #fff;
 }
 
@@ -183,11 +190,14 @@ a {
 
 /* Profile Content */
 .profile-content {
+  margin-top: 30px;
   padding: 20px;
   background: #fff;
   min-height: 460px;
 }
-
+.form-rows {
+  padding: 0;
+}
 
 /*navigator */
 
