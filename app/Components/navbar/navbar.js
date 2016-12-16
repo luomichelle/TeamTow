@@ -11,7 +11,11 @@ var Navbar = React.createClass({
 		var self = this;
 	},
 	dropdown: function() {
-		return alert('dropdown function is working');
+		return (
+			<div>
+				<SignIn />
+			</div>
+		);
 	},
 	popup: function() {
 		return alert('popup function is working');
@@ -36,7 +40,7 @@ var Navbar = React.createClass({
 								<a className="truckClass" href="/truck/signup-signin">TOW TRUCK</a>
 							</li>
 							<li>
-								<a onClick={this.dropdown} className="page-scroll" href="/users/signup-signin"><span className="glyphicon glyphicon-log-in"></span> Sign In</a>
+								<a onClick={this.dropdown} className="page-scroll"><span className="glyphicon glyphicon-log-in"></span> Sign In</a>
 							</li>
 							<li>
 								<a onClick={this.dropdown} className="page-scroll" href="/users/signup"><span className="glyphicons glyphicons-plus"></span> Create Account</a>
