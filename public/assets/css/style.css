@@ -64,8 +64,8 @@ a {
 
 #inputs {
     z-index: 10;
-    top: 263px;
-    left: 90px;
+    top: 12px;
+    left: 40px;
 }
 
 #directions {
@@ -92,7 +92,9 @@ a {
 .profile {
   margin: 40px 0;
 }
-
+.user-name {
+  text-transform: capitalize;
+}
 /* Profile sidebar */
 .profile-sidebar {
   padding: 20px 0 10px 0;
@@ -193,7 +195,9 @@ a {
   background: #fff;
   min-height: 460px;
 }
-
+.form-rows {
+  padding: 0;
+}
 
 /*navigator */
 
