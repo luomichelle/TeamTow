@@ -41,7 +41,7 @@ router.get('/loggedinusers', function(req,res){
 
 router.get('/truckUserCoords/:truckName?', function(req,res){
 	var truckName = req.params.truckName;
-	User.find({username : truckName}, function(err,data){
+	Trucks.find({username : truckName}, function(err,data){
 		res.json(data);
 	})
 })
@@ -61,9 +61,18 @@ router.post('/helpRequest', function(req,res){
 	  }) 
 })
 
+router.get('/getStatus/:userName?', function(req,res){
+	var userName = req.params.userName;
+	console.log(userName)
+	Request.find({username: userName}, function(err,data){
+		if(err){console.log(err)}
+			else{res.json(data)};
+	})
+
+})
+
 //======================= TRUCKS ===========================
 router.post('/geolocatorTruck',function(req,res){
-	console.log('hit');
 	console.log(req.body);
 	var userName = req.body.username;
 	var lat = req.body.latitude;
@@ -76,7 +85,19 @@ router.post('/geolocatorTruck',function(req,res){
 
 })
 
+router.get('/requests', function(req,res){
+	Request.find({}, function(err,data){
+		res.json(data);
+	})
+})
 
+router.post('/userRequestAccepted', function(req,res){
+	var requestDetails = req.body;
+	Request.update({username: requestDetails.usernameUser},{resolved: true, driverid: requestDetails.usernameCompany}, function(err,data){
+		if(err){console.log(err)}
+		else{res.json("success")}
+	})
+})
 
 
 
