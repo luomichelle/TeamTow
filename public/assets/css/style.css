@@ -69,8 +69,8 @@ a {
 
 #inputs {
     z-index: 10;
-    top: 12px;
-    left: 40px;
+    top: 70px;
+    left: 50px;
 }
 
 #directions {
@@ -93,9 +93,24 @@ a {
 }
 
 
+.form-box {
+  margin-top: 100px;
+}
+
+.inner-bg {
+  /*<img id="towimage" src="/assets/img/tow-truck-banner1.jpg" alt="Banner Image"/>*/
+  background: url(/assets/img/shaking_hands_trucker.jpg) no-repeat center center;
+  background-size: cover;
+}
+
+.page-scroll {
+  color: black !important;
+}
+
+
 /*-----Profile Sidebar CSS*/
 .profile {
-  margin: 40px 0;
+  margin: 60px 0;
 }
 .user-name {
   text-transform: capitalize;
