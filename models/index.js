@@ -15,7 +15,7 @@ var io = require('socket.io')(server);
 
 
 if(process.env.MONGODB_URI != undefined) {
-  mongoUrl = process.env.MONGODB_URI;
+  mongoUrl ='mongodb://heroku_75whpmql:s5d5226plj0aja03dg0t93tqbh@ds013574.mlab.com:13574/heroku_75whpmql';
 } else {
   mongoUrl = config.mongo_url;
 }
