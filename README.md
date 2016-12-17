@@ -9,24 +9,17 @@ mongoimport --db teamtow --collection trucks --drop --file ./trucks.json
 - Install NodeJS and MongoDB
 - Run 'mongod'
 - Run `sudo npm install`
-- run `mongoimport --db teamtow --collection truckData --drop --file ./truck.json` to import sample truck information in MongoDB
-- run `mongoimport --db teamtow --collection clientData --drop --file ./client-data.json` to import sample clients information in MongoDB
+- use command 'webpack -w' if you have updated anything in HTML/CSS.
+- mongoimport --db teamtow --collection trucks --drop --file ./trucks.json
+
 
 ### How to run: 
 
 - run `node app.js`
-- Open a demo client page by going to http://localhost:8000/client.html?clientId=01
-- Open 3 or more truck pages from the imported truck profiles on separate tabs 
+- Open a demo client page by going to http://localhost:3000
 
 
-
-[01](http://localhost:8000/truck.html?userId=01), 
-[02](http://localhost:8000/truck.html?userId=02), 
-[03](http://localhost:8000/truck.html?userId=03), 
-[04](http://localhost:8000/truck.html?userId=04), 
-[05](http://localhost:8000/truck.html?userId=05), 
-[06](http://localhost:8000/truck.html?userId=06), 
-[07](http://localhost:8000/truck.html?userId=07)
-
-http://localhost:8000/truck.html?userId=02
-http://localhost:8000/client.html?clientId=02
+Powerpoint
+https://docs.google.com/presentation/d/1E7ISRB_Uack6Yt_V5CB-aBWs65QBqns1C3ASaw2GSoo/edit#slide=id.gc6f80d1ff_0_27
+Video
+https://www.youtube.com/watch?v=KS6M5ihxFgg&feature=youtu.be
