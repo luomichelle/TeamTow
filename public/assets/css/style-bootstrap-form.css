@@ -6,8 +6,7 @@ body {
     color: #888;
     line-height: 30px;
     text-align: center;
-/*    background-image: url('/assets/img/lego_tow.jpg');*/
-	background-color:white;
+    background-image: url('/assets/img/lego_tow.jpg');
     background-size:100% auto;
 }
 

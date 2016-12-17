@@ -1,10 +1,12 @@
 <div>
-	{{> nav-user }}
+	{{> nav }}
 </div>
 <div class="container">
 	<div class="row profile">
-		
-		<div class="col-sm-9">
+		<div class="col-xs-3">
+			{{> sidebar }}
+		</div>
+		<div class="col-xs-9">
 			<div class="profile-content" id="background">
 		        <div id="login_header">
 					{{#unless logged_in}}
@@ -16,45 +18,32 @@
 
 					<div class="panel panel-default">
 	                    <div class="panel-heading text-center">
-	                    	<h1>Welcome To Team Tow!</h1>							
-							<h3 class="user-name">{{username}}, We Here To Help You</h3>
-			
-							<button type="submit" class="btn btn-danger" id="customerRequest">Call a Truck</button>
-							
-			             </div> 
-			                   
-	                    <div class="panel-body">	                    	
-	                    	<div id="map" style="width: 100%;height: 500px;">
+	                    	<h1 style="text-transform: capitalize;">Welcome {{username}}! </h1>							
+							<h3>Your email: {{email}}! </h3>
+			{{!-- 				<p>Your latitude: {{lat}}.</p>							
+							<p>Your longitude: {{lng}}.</p>	 --}}						
+							<p id='username'>{{username}}</p>
+	                        
+	                    </div>
+	                    <div class="panel-body">
+	                    	
+		                    	<div id="map" style="width: 100%;height: 500px;"></div>
 		                    	<div id='inputs'></div>
 								<div id='errors'></div>
-								<div id='routes'></div>
-								<div id='instructions'></div>
-							</div>	
-							<h3> Online Tow Truck Drivers </h3>
-
-							<table id="simple-table" class="table  table-bordered table-hover">
-											<thead>
-												<tr>											
-													<th class="text-center">
-														<i class="ace-icon fa fa-clock-o"></i>Truck ID</th>
-													<th>Name</th>
-													<th>Phone</th>
-													
-												</tr>
-											</thead>
-											<tbody id="onlineUsers">
-												
-											</tbody>
-							</table>		
-							<!-- <ul id="onlineUsers"></ul> -->
-									                     
-							<div>
+								  <div id='routes'></div>
+								  <div id='instructions'></div>
+								</div>	
+								<div style='width:200px;height:200px'>
+								  
+										<button type="submit" class="btn" id="customerRequest">Call a truck</button>
+										<h6> Online Users </h6>
+										<ul id="onlineUsers">
+										</ul>
+									</div>                       
+								<div style="width:200px;height:200px">
 								<h3> Company: </h3> <span id="company"> </span> </br>
-								<h3> Request Status: </h3> <span id="requestStatus"> </span> 
-								<p id='username'>{{username}}</p>	                        
-		                    </div>
-						</div>	
-							
+								<h3> Request Status: </h3> <span id="requestStatus"> </span> </br>
+								</div>
 								
 						<script>
 						L.mapbox.accessToken = 'pk.eyJ1IjoiZGltYXNvbCIsImEiOiJjaXZycnFjeG8wM3lwMnpxdGR2ZDc1emU3In0.I-hsvy9AtsWfZozW0-BRjA';
@@ -157,7 +146,7 @@
 						$.get('/loggedinusers', function(data){
 							//console.log(data)
 							for(i=0;i<data.length;i++){
-								$('#onlineUsers').append('<tr class="center form-rows"><td>' + (i+1) + '</td>' + '<td class="user-name">' + data[i].username + '</td>' + '<td>' + data[i].phone + '</td></tr>')
+								$('#onlineUsers').append('<li>' +'<value =' +data[i].username + '>' + data[i].username + '</button>' + '</li>')
 							};
 						})
 
@@ -221,10 +210,6 @@
 					{{/if}}
 				</div>
 			</div>
-			<div class="col-sm-3">
-				{{> sidebar }}
-			</div>
-		
 	    </div>          
 	</div>
 

@@ -1,13 +1,13 @@
 <div>
-	{{> nav-user }}
+	{{> nav }}
 </div>
 <div class="container">
 	<div class="row profile">
-		<div class="col-sm-3">
-			{{> sidebar-trucks }}
+		<div class="col-xs-3">
+			{{> sidebar }}
 		</div>
-		<div class="col-sm-9">
-			<div class="profile-content" id="background-truck">
+		<div class="col-xs-9">
+			<div class="profile-content" id="background">
 		        <div id="login_header">
 					{{#unless logged_in}}
 						<p><a href="/users/signup-signin">Sign In or Sign Up</a></p>
@@ -18,15 +18,9 @@
 
 					<div class="panel panel-default">
 	                    <div class="panel-heading text-center">
-	                    	<h1 style="text-transform: capitalize;">Welcome to TeamTow {{username}}! </h1>							
-							
-								{{!--     <form role="form" action="/users/user-request" method="POST" class="user-request-form">
-										<button type="submit" class="btn" id="customerRequest">Call a truck</button>
-									</form> --}}
-										<h2> Your Current Requests</h2>
-										<div class="panel" id="requests"></div>
-									                     
-								
+	                    	<h1 style="text-transform: capitalize;">Welcome {{username}}! </h1>							
+							<h3>Your email: {{email}}!</h3>						
+							<p id='username'>{{username}}</p>
 	                        
 	                    </div>
 	                    <div class="panel-body">
@@ -37,6 +31,14 @@
 								  <div id='routes'></div>
 								  <div id='instructions'></div>
 								</div>	
+								<div style='width:200px;height:200px'>
+								{{!--     <form role="form" action="/users/user-request" method="POST" class="user-request-form">
+										<button type="submit" class="btn" id="customerRequest">Call a truck</button>
+									</form> --}}
+										<h6> Requests</h6>
+										<div id="requests" style="overflow:scroll; width:600px; height:500px">
+										</div>
+									</div>                       
 								
 						<script>
 						L.mapbox.accessToken = 'pk.eyJ1IjoiZGltYXNvbCIsImEiOiJjaXZycnFjeG8wM3lwMnpxdGR2ZDc1emU3In0.I-hsvy9AtsWfZozW0-BRjA';
@@ -130,7 +132,7 @@
 							//console.log(data)
 								$('#requests').empty();
 							for(i=0;i<data.length;i++){
-								$('#requests').append('<li>' +'<button class="btn btn-danger" id="requestUser" value =' + JSON.stringify(data[i]) + '>' + data[i].username + " "+ "Resolved:"+ +data[i].resolved + "  "+"Driver ID:"+ data[i].driverid +'</button>' + '</li>')
+								$('#requests').append('<li>' +'<button id="requestUser" value =' + JSON.stringify(data[i]) + '>' + data[i].username + " "+ "Resolved:"+ +data[i].resolved + "  "+"Driver ID:"+ data[i].driverid +'</button>' + '</li>')
 							};
 						})
 						}
