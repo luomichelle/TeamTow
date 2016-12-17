@@ -615,6 +615,11 @@ section.first {
     font-size: 3em;
   }
 
+/*slogan*/
+.slogan{
+    color: white;
+    margin-top: 0;
+}
 
 
 @media (max-width: 920px){
@@ -662,8 +667,3 @@ section.first {
 .home-page-signup {
   display:none;
 }
-<<<<<<< HEAD
-}
-=======
-}
->>>>>>> master
