@@ -12,11 +12,16 @@ var Trucks = require('../models').Truck;
 //   res.render('index');
 // });
 
-
-
 router.get('/', function(req, res) {
-  res.render('index');
+	res.redirect('/index');
 });
+
+router.get('/index', function(req,res) {
+  res.render('trucks/test', {
+    layout: 'main-registration'
+  });
+});
+
 
 router.post('/geolocator',function(req,res){
 	console.log(req.body);
