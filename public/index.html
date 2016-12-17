@@ -1,46 +1,200 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Team Tow</title>
-	
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-	<link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" href="/assets/font-awesome/css/font-awesome.min.css">
-	<link rel="stylesheet" href="/assets/css/form-elements.css">
-	<link rel="stylesheet" href="/assets/css/style-bootstrap-form.css">
-	<link rel="stylesheet" href="/assets/css/style.css">
+	<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Team Tow</title>
 
-	<!-- Favicon -->
-	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-	<link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/css/form-elements.css">
+    <link rel="stylesheet" href="/assets/css/style-bootstrap-form.css">
+    <link rel="stylesheet" href="/assets/css/style.css" type="text/css" />
 
-	<!-- Favicon media query sizes -->
-	<link rel="apple-touch-icon" sizes="57x57" 		href="/apple-icon-57x57.png">
-	<link rel="apple-touch-icon" sizes="60x60" 		href="/apple-icon-60x60.png">
-	<link rel="apple-touch-icon" sizes="72x72" 		href="/apple-icon-72x72.png">
-	<link rel="apple-touch-icon" sizes="76x76" 		href="/apple-icon-76x76.png">
-	<link rel="apple-touch-icon" sizes="114x114" 	href="/apple-icon-114x114.png">
-	<link rel="apple-touch-icon" sizes="120x120" 	href="/apple-icon-120x120.png">
-	<link rel="apple-touch-icon" sizes="144x144" 	href="/apple-icon-144x144.png">
-	<link rel="apple-touch-icon" sizes="152x152" 	href="/apple-icon-152x152.png">
-	<link rel="apple-touch-icon" sizes="180x180" 	href="/apple-icon-180x180.png">
-	<link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-	<link rel="manifest" href="/manifest.json">
-	<meta name="msapplication-TileColor" content="#ffffff">
-	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
-	<meta name="theme-color" content="#ffffff">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
-</head>
+    <!-- Favicon and touch icons -->
+    <!-- <link rel="shortcut icon" href="/assets/ico/favicon.png"> -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="/assets/ico/apple-touch-icon-57-precomposed.png">
+	</head>
 
 <body>
-	<div id="app"></div>
+<!-- 	<div id="app"></div> -->
+	<nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
+        <div class="container">
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="/index">TeamTow</a>
+                <a class="ace-icon glyphicon glyphicon-road"></a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a className="btn btn-success btn-md truckbtn" id="become-host" href="/trucks/signup-signin">Become a Tow Truck Provider</a>
+                    </li>
+
+                    <li>
+                        <a className="page-scroll" href="/users/signup-signin">Sign In</a>
+                    </li>
+                    <li>
+                        <a href="/users/sign-out"><span className="glyphicon glyphicon-log-in"></span> Sign Out</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="intro-header">
+        <div class="container">
+            <div class="col-md-6">
+            <!-- First Featurette -->
+                <div class="featurette" id="featurette-about">
+                    <div class="intro-text">
+                        <span class="name">Long way to go <br>
+                        <strong>Short time to get there</strong>
+                        <br>
+                         Always on, always available
+                        </span>
+
+                            <br>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="home-page-signup">
+                    <h3 class="slogan">Sign Up for Free <br>
+                        <strong>we're always on our tows</strong> </h3>
+
+                            <form role="form" action="/users/sign-up" method="POST" className="registration-form">
+                                <div className="form-group">
+                                    <input type="text" name="username" placeholder="Username" className="form-email form-control" id="form-username" />
+                                </div>
+                                <div className="form-group">
+                                    <input type="text" name="firstName" placeholder="First Name" className="form-email form-control" id="form-firstName" />
+                                </div>
+                                <div className="form-group">
+
+                                    <input type="text" name="lastName" placeholder="Last Name" className="form-email form-control" id="form-lastName" />
+                                </div>
+                                <div className="form-group">
+
+                                    <input type="text" name="email" placeholder="Email" className="form-email form-control" id="form-email" />
+                                </div>
+                                <div className="form-group">
+                                    <input type="password" name="password" placeholder="Password" className="form-password form-control" id="form-password" />
+                                </div>
+                                <div class="form-group">
+                                     <button type="submit" class="btn btn-primary btn-block">User Sign Up </button>
+                                </div>
+                                <h4>or <a className="page-scroll" href="/users/signup-signin">Sign in</a> as a User</h4>
+                             </form>
+                    </div>
+            </div>
+        </div>
+    </div> 
+<!-- First Banner -->
+    <div class="col-lg-12" id="bannersize">
+        <div class="tow-truck-banner">
+            <img id="towimage" src="/assets/img/tow-truck-banner1.jpg" alt="Banner Image"/>
+            </div>
+        </div>
+    </div>
+<!-- Introduction -->
+    <div class="content-section-a">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <hr class="section-heading-spacer"></hr>
+                    <div class="clearfix"></div>
+                    <div class="section-heading">
+                    <strong>w</strong>ho are we
+                    </div>
+                    <div class="section-introduction">
+                    Car broken down?
+                    <br>
+                    Our app lets you locate a tow truck at the touch of a button.
+                    <br>
+
+                    You and the tow truck can see each other's position on the map. 
+                    <br>
+                    No need to give directions.
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <hr class="section-heading-spacer"></hr>
+                    <div class="clearfix"></div>
+                    <div class="section-heading">
+                    <strong>h</strong>ow it works
+                    </div>
+                    <div class="section-introduction">
+                    Tap a button to see nearby tow trucks.
+                    <br>
+                    Choose the one you want.
+                    <br>
+                    When a tow truck responds to your request, you can see your driver's photo and details.
+                    <br>
+                    Track your driver's arrival on the map.
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <hr class="section-heading-spacer"></hr>
+                    <div class="clearfix"></div>
+                    <div class="section-heading">
+                    <strong>f</strong>rontend 
+                    </div>
+                    <div class="section-introduction">
+                        <ul>
+                            <li>REACT.JS</li>
+                            <li>HTML/CSS</li>
+                            <li>Bootstrap</li>
+                            <li>Javascript</li>
+                            <li>AJAX</li>
+                            <li>RESTFUL API</li>
+                            <li>Mapbox API</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <hr class="section-heading-spacer"></hr>
+                    <div class="clearfix"></div>
+                    <div class="section-heading">
+                    <strong>b</strong>ackend
+                    </div>
+                    <div class="section-introduction">
+                        <ul>
+                            <li>Node.JS</li>
+                            <li>Express.JS</li>
+                            <li>MVC pattern</li>
+                            <li>Handlebars JS</li>
+                            <li>MongoDB</li>
+                            <li>User Authorization</li>
+                            <li>Bcrypt.JS</li>
+                            
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 	<script src="bundle.js"></script>
+    <script src="/assets/js/jquery-1.11.1.min.js"></script>
+    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/assets/js/scripts.js"></script>
 	
 </body>
 </html>
