@@ -256,6 +256,12 @@ a {
   font-weight: bold;
   border: none;
   font-size:15px;
+  padding: 1%;
+}
+
+#become-host{
+    color: #ffffff;
+    background-color: #19b9e7;
 }
 
 .navbar-custom a:focus {
