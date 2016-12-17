@@ -2,38 +2,30 @@ var express = require('express');
 var router = express.Router();
 // var pwUtil = require('../helpers/password');
 var bcrypt = require('bcryptjs');
-var User = require('../models').Truck;
+var User = require('../models').User;
+var Truck = require('../models').Truck;
+var RequestDB = require('../models').Request;
 
 //this is the users_controller.js file
 router.get('/signup-signin', function(req,res) {
-	res.render('trucks/signup-signin', {
+	res.render('users/signup-signin', {
 		layout: 'main-registration'
 	});
 });
 
-
-//http://localhost:3000/trucks/truck
-router.get('/truck', function(req,res) {
-  res.render('trucks/truck', {
+router.get('/signup', function(req,res) {
+  res.render('users/signup', {
     layout: 'main-registration'
   });
 });
 
-router.get('/index', function(req,res) {
-  res.render('trucks/index', {
+router.get('/user', function(req,res) {
+  res.render('users/user', {
     layout: 'main-registration'
   });
 });
 
-<<<<<<< HEAD
-router.get('/test', function(req,res) {
-  res.render('trucks/test', {
-    layout: 'main-registration'
-  });
-});
 
-=======
->>>>>>> master
 
 router.post("/sign-up", function(req, res) {
   User.find({
@@ -47,7 +39,7 @@ router.post("/sign-up", function(req, res) {
       bcrypt.genSalt(10, function(err, salt) {
         bcrypt.hash(req.body.password, salt, function(err, hash) {
       
-      var truck = new User({
+      var user = new User({
         username: req.body.username,
         password_hash: hash,
         email: req.body.email,
@@ -56,24 +48,21 @@ router.post("/sign-up", function(req, res) {
 
       });
 
-      truck.save(function(err) {
-
-        console.log("truck is trying to save11111")
+      user.save(function(err) {
 
         if(err) throw err;
 
         req.session.logged_in = true;
         // the username to the session
-        req.session.username = truck.username;
+        req.session.username = user.username;
         // and the user's email.
-        req.session.user_email = truck.email;
+        req.session.user_email = user.email;
 
-        req.session.firstName = truck.firstName;
+        req.session.firstName = user.firstName;
 
-        req.session.lastName = truck.lastName;
+        req.session.lastName = user.lastName;
 
-
-        res.render('trucks/index', {
+        res.render('index', {
           email: req.session.user_email,
           logged_in: req.session.logged_in,
           username: req.session.username,
@@ -97,7 +86,6 @@ router.post("/sign-in", function(req, res) {
     var user = users[0];
     user.validatePassword(req.body.password, function(err, success) {
       if(err) throw err;
-          if(err) throw new Error("Something is wrong with your account.");
 
       if(success) {
 
@@ -111,7 +99,7 @@ router.post("/sign-in", function(req, res) {
 
         req.session.lastName = user.lastName;
 
-        res.render('trucks/index', {
+        res.render('index', {
           email: req.session.user_email,
           logged_in: req.session.logged_in,
           username: req.session.username,
@@ -136,5 +124,30 @@ router.get("/sign-out", function(req,res) {
      res.redirect("/")
   })
 });
+
+
+
+
+//============================router for reuqest
+router.post("/user-request", function(req, res) {
+    console.log("user-reuqest clicked!")
+  RequestDB.find({email: req.body.email}, function(err, users) {
+        console.log("user-reuqest clicked!1111")
+    if(err) throw err;
+       console.log("user-reuqest clicked!222222")
+        res.render('trucks/index', {
+          email: req.session.user_email,
+          logged_in: req.session.logged_in,
+          username: req.session.username,
+          firstName: req.session.firstName,
+          lastName: req.session.lastName
+        });
+    });
+  });
+
+
+
+
+
 
 module.exports = router;

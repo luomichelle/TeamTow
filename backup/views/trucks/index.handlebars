@@ -1,0 +1,191 @@
+<div>
+	{{> nav }}
+</div>
+<div class="container">
+	<div class="row profile">
+		<div class="col-xs-3">
+			{{> sidebar }}
+		</div>
+		<div class="col-xs-9">
+			<div class="profile-content" id="background">
+		        <div id="login_header">
+					{{#unless logged_in}}
+						<p><a href="/users/signup-signin">Sign In or Sign Up</a></p>
+					{{/unless}}
+
+					{{#if logged_in}}
+
+
+					<div class="panel panel-default">
+	                    <div class="panel-heading text-center">
+	                    	<h1 style="text-transform: capitalize;">Welcome {{username}}! </h1>							
+							<h3>Your email: {{email}}!</h3>						
+							<p id='username'>{{username}}</p>
+	                        
+	                    </div>
+	                    <div class="panel-body">
+	                    	
+		                    	<div id="map" style="width: 100%;height: 500px;"></div>
+		                    	<div id='inputs'></div>
+								<div id='errors'></div>
+								  <div id='routes'></div>
+								  <div id='instructions'></div>
+								</div>	
+								<div style='width:200px;height:200px'>
+								{{!--     <form role="form" action="/users/user-request" method="POST" class="user-request-form">
+										<button type="submit" class="btn" id="customerRequest">Call a truck</button>
+									</form> --}}
+										<h6> Requests</h6>
+										<div id="requests" style="overflow:scroll; width:600px; height:500px">
+										</div>
+									</div>                       
+								
+						<script>
+						L.mapbox.accessToken = 'pk.eyJ1IjoiZGltYXNvbCIsImEiOiJjaXZycnFjeG8wM3lwMnpxdGR2ZDc1emU3In0.I-hsvy9AtsWfZozW0-BRjA';
+						var map = L.mapbox.map('map','mapbox.streets')
+								.addControl(L.mapbox.geocoderControl('mapbox.places', {
+								        autocomplete: true }))
+								.setView([34.17, -118.51],10);
+						var userMarker;
+						var truckMarker;
+						var username;
+						var trucks;
+						var isFound = false;
+						var coordinatesUser;
+						var coordinatesTruck;
+							
+						
+						var myLayer = L.mapbox.featureLayer().addTo(map);
+
+
+						// This uses the HTML5 geolocation API, which is available on
+						// most mobile browsers and modern browsers, but not in Internet Explorer
+						//
+						// See this chart of compatibility for details:
+						// http://caniuse.com/#feat=geolocation
+						if (!navigator.geolocation) {
+						    map.innerHTML = 'Please Allow Geolocation';
+						} else {
+								  map.locate({watch:true, timeout: 1000, frequency:1});						   
+						}
+
+						// Once we've got a position, zoom and center the map
+						// on it, and add a single marker.
+						map.on('locationfound', function(e) {
+
+							username = document.getElementById('username').textContent;
+							coordinatesUser = {latitude: e.latitude,
+											  longitude: e.longitude,
+											   username}
+							//console.log(coordinatesUser);
+						    map.fitBounds(e.bounds);
+						    map.setZoom(11);
+						    myLayer.on('mouseover', function(e) {
+							    e.layer.openPopup();
+							});
+							myLayer.on('mouseout', function(e) {
+							    e.layer.closePopup();
+							});
+						isFound = true;
+						   
+						if(isFound === true){
+						$.post('/geolocatorTruck', coordinatesUser, function(req,res) {
+    						//console.log('Post request' +  res);
+    					});
+						}
+						if(userMarker){
+							userMarker.setLatLng( newLatLng = new L.LatLng(coordinatesUser.latitude, coordinatesUser.longitude))}
+						});
+					
+						
+						// move the attribution control out of the way
+						map.attributionControl.setPosition('bottomleft');
+
+						// create the initial directions object, from which the layer
+						// and inputs will pull data.
+						var directions = L.mapbox.directions();
+
+						var directionsLayer = L.mapbox.directions.layer(directions)
+						    .addTo(map);
+
+						var directionsInputControl = L.mapbox.directions.inputControl('inputs', directions)
+						    .addTo(map);
+
+						var directionsErrorsControl = L.mapbox.directions.errorsControl('errors', directions)
+						    .addTo(map);
+
+						var directionsRoutesControl = L.mapbox.directions.routesControl('routes', directions)
+						    .addTo(map);
+
+						var directionsInstructionsControl = L.mapbox.directions.instructionsControl('instructions', directions)
+						    .addTo(map);
+
+						// If the user chooses not to allow their location
+						// to be shared, display an error message.
+						map.on('locationerror', function() {
+						    map.innerHTML = 'Position could not be found';
+						});
+
+							function requests(){
+								console.log('hit requests')
+							$.get('/requests', function(data){
+							//console.log(data)
+								$('#requests').empty();
+							for(i=0;i<data.length;i++){
+								$('#requests').append('<li>' +'<button id="requestUser" value =' + JSON.stringify(data[i]) + '>' + data[i].username + " "+ "Resolved:"+ +data[i].resolved + "  "+"Driver ID:"+ data[i].driverid +'</button>' + '</li>')
+							};
+						})
+						}
+
+						$(document).ready(function(){
+							var iconUser = L.icon({
+								iconUrl: 'http://www.icon100.com/up/4198/16/71-tow.png'
+							})
+
+						userMarker = L.marker([0, 0], {icon: iconUser}).addTo(map);
+
+						setInterval(function(){requests()}, 5000);
+
+						});
+
+						$('body').on('click', '#requestUser', function(){
+							var usernameDetails = JSON.parse($(this).val());
+							var requestLat = usernameDetails.latitude;
+							var requestLng = usernameDetails.longitude;
+							var usernameUser = usernameDetails.username;
+							var requestDetails = {
+								lat: requestLat,
+								lng: requestLng,
+								usernameCompany: username,
+								usernameUser: usernameUser
+							}
+							console.log(requestDetails)
+							$.post('/userRequestAccepted', requestDetails, function(data){
+								console.log('accepted request');
+								 L.marker([requestDetails.lat, requestDetails.lng, 0]).addTo(map)
+							})
+						})
+
+						</script>
+							
+
+	                    </div> <!--panel-body-->
+	                </div>
+
+					{{/if}}
+				</div>
+			</div>
+	    </div>          
+	</div>
+
+
+		{{#unless logged_in}}
+		  <p>
+		    You must login to add a person.
+		  </p>
+		{{/unless}}
+</div>
+
+
+
+
