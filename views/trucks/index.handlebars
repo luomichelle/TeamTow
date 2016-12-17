@@ -4,7 +4,7 @@
 <div class="container">
 	<div class="row profile">
 		<div class="col-xs-3">
-			{{> sidebar }}
+			{{> sidebar-trucks }}
 		</div>
 		<div class="col-xs-9">
 			<div class="profile-content" id="background">
@@ -17,12 +17,22 @@
 
 
 					<div class="panel panel-default">
-	                    <div class="panel-heading text-center">
-	                    	<h1 style="text-transform: capitalize;">Welcome {{username}}! </h1>							
-							<h3>Your email: {{email}}!</h3>						
-							<p id='username'>{{username}}</p>
-	                        
-	                    </div>
+						<div class="raw">
+							<div style="float: right;clear:both;">
+								{{!--     <form role="form" action="/users/user-request" method="POST" class="user-request-form">
+								<button type="submit" class="btn" id="customerRequest">Call a truck</button>
+								</form> --}}
+									<h4> Your Requests</h4>
+								<div id="requests"></div>
+							</div>   
+		                    <div style="float: right;" class="panel-heading text-center">
+		                    	<h1 style="text-transform: capitalize;">Hello, {{username}}! </h1>							
+								<!-- <h3>Plaese check customers requests</h3>	 -->					
+								<h3 class="user-name" id='username'>{{username}}</h3>
+		                        
+		                    </div>
+		                       
+		                </div>    
 	                    <div class="panel-body">
 	                    	
 		                    	<div id="map" style="width: 100%;height: 500px;"></div>
@@ -30,15 +40,8 @@
 								<div id='errors'></div>
 								  <div id='routes'></div>
 								  <div id='instructions'></div>
-								</div>	
-								<div style='width:200px;height:200px'>
-								{{!--     <form role="form" action="/users/user-request" method="POST" class="user-request-form">
-										<button type="submit" class="btn" id="customerRequest">Call a truck</button>
-									</form> --}}
-										<h6> Requests</h6>
-										<div id="requests" style="overflow:scroll; width:600px; height:500px">
-										</div>
-									</div>                       
+						</div>	
+						                 
 								
 						<script>
 						L.mapbox.accessToken = 'pk.eyJ1IjoiZGltYXNvbCIsImEiOiJjaXZycnFjeG8wM3lwMnpxdGR2ZDc1emU3In0.I-hsvy9AtsWfZozW0-BRjA';
