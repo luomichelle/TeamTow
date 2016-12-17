@@ -16,6 +16,7 @@ Here is the main HTML where handlebars will render to
     <link rel="stylesheet" href="/assets/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/assets/css/form-elements.css">
     <link rel="stylesheet" href="/assets/css/style-bootstrap-form.css">
+    <link rel="stylesheet" href="/assets/css/style.css" type="text/css" />
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -30,13 +31,14 @@ Here is the main HTML where handlebars will render to
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="/assets/ico/apple-touch-icon-57-precomposed.png">
-    <link rel="stylesheet" href="/assets/css/style.css" type="text/css" />
 	</head>
 	<body>
 	  
         {{> nav }}
 
         {{{ body }}}
+
+        {{> footer }}
 
     <!-- Javascript -->
     <script src="/assets/js/jquery-1.11.1.min.js"></script>

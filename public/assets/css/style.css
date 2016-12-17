@@ -1,21 +1,42 @@
 body {
-  padding: 50px;
+  /*padding: 50px;*/
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-image: url('/assets/img/lego_tow.jpg');
+  background-color: white;
   
   background-repeat: no-repeat;
   background-size:cover;
   /*background-position: center center;*/
 
 }
+
+strong{
+  font-weight: 700;
+}
+
+.truckbtn {
+  margin: 15px 5px 5px 10px;
+}
+.logotxt {
+  font-size: 40px;
+
+}
+.img-avatar {
+  max-width: 100px;
+}
+.signup-div {
+  margin-top: 250px;
+  width: 33%;
+  float: right;
+}
+
 .navbar {
-  background-color: black;
+  background-color: white;
   color: #74baed;
-  padding-bottom: 15px;
+  padding-bottom: 5px;
   border: 0;
 }
 .navbar-brand {
-	font: 30px Helvetica, Arial, sans-serif;
+	font: 40px Helvetica, Arial, sans-serif;
 
 }
 .navbar-ex1-collapse {
@@ -31,6 +52,11 @@ a {
    max-height: 147px;
 }
 
+.glyphicon.glyphicon-road {
+    font-size: 50px;
+}
+
+
 /*-----------Mapbox direction*/
 #inputs,
 #errors,
@@ -43,8 +69,8 @@ a {
 
 #inputs {
     z-index: 10;
-    top: 263px;
-    left: 90px;
+    top: 12px;
+    left: 40px;
 }
 
 #directions {
@@ -71,10 +97,13 @@ a {
 .profile {
   margin: 40px 0;
 }
-
+.user-name {
+  text-transform: capitalize;
+}
 /* Profile sidebar */
 .profile-sidebar {
   padding: 20px 0 10px 0;
+  margin-top: 30px;
   background: #fff;
 }
 
@@ -166,7 +195,471 @@ a {
 
 /* Profile Content */
 .profile-content {
+  margin-top: 30px;
   padding: 20px;
   background: #fff;
   min-height: 460px;
+}
+.form-rows {
+  padding: 0;
+}
+
+/*navigator */
+
+#login-dp{
+    min-width: 250px;
+    padding: 14px 14px 0;
+    overflow:hidden;
+    background-color:gray;
+}
+#login-dp .help-block{
+    font-size:12px    
+}
+#login-dp .bottom{
+    background-color:rgba(255,255,255,.8);
+    border-top:1px solid #ddd;
+    clear:both;
+    padding:14px;
+}
+#login-dp .social-buttons{
+    margin:12px 0    
+}
+#login-dp .social-buttons a{
+    width: 49%;
+}
+#login-dp .form-group {
+    margin-bottom: 10px;
+}
+.btn-fb{
+    color: #fff;
+    background-color:#3b5998;
+}
+.btn-fb:hover{
+    color: #fff;
+    background-color:#496ebc 
+}
+.btn-tw{
+    color: #fff;
+    background-color:#55acee;
+}
+.btn-tw:hover{
+    color: #fff;
+    background-color:#59b5fa;
+}
+
+.navbar-brand {
+   padding: 0;
+  }
+.navbar-custom {
+  background: #ffffff;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  border: none;
+  font-size:15px;
+  padding: 1%;
+}
+
+#become-host{
+    color: #ffffff;
+    background-color: #19b9e7;
+}
+
+.navbar-custom a:focus {
+  outline: none;
+}
+.navbar-custom .navbar-brand {
+  color: black;
+}
+.navbar-custom .navbar-brand:hover,
+.navbar-custom .navbar-brand:focus,
+.navbar-custom .navbar-brand:active,
+.navbar-custom .navbar-brand.active {
+  color: gray;
+}
+.navbar-custom .navbar-nav {
+  letter-spacing: 1px;
+}
+.navbar-custom .navbar-nav li a:after {
+  color: #9e9e9e;    
+  background: none repeat scroll 0 0 transparent;
+  text-decoration: none;
+  bottom: 0;
+  content: "";
+  height: 2px;
+  left: 30%;
+  position: relative;
+  background: black;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+  font-size:18;
+  display: inline-block;
+  -webkit-text-stroke-width: 0px;
+  font-weight: lighter;
+}
+.navbar-custom .navbar-nav li a:hover:after {  
+  width: 35%; 
+  left: 11%; 
+}
+
+.navbar-custom .navbar-nav li a:after {    
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 30%;
+  position: absolute;
+  background: black;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+
+}
+.navbar-custom .navbar-nav li a:hover:after {  
+  width: 35%; 
+  left: 11%; 
+}
+.navbar-custom .navbar-nav li.active a:hover,
+.navbar-custom .navbar-nav li.active a:focus,
+.navbar-custom .navbar-nav li.active a:active {
+  color: white;
+  background: black;
+}
+.navbar-custom .navbar-toggle {
+  color: black;
+  text-transform: uppercase;
+  font-size: 10px;
+  border-color: white;
+}
+.navbar-custom .navbar-toggle:hover,
+.navbar-custom .navbar-toggle:focus {
+  background-color: white;
+  color: black;
+  border-color: black;
+}
+
+section {
+  padding: 100px 0;
+}
+section h2 {
+  margin: 0;
+  font-size: 3em;
+}
+section.success {
+  background: #18BC9C;
+  color: white;
+}
+
+/*/nav   */
+
+@media(max-width:768px){
+    #login-dp{
+        background-color: inherit;
+        color: #fff;
+    }
+    #login-dp .bottom{
+        background-color: inherit;
+        border-top:0 none;
+    }
+}
+/*/navigator//
+
+
+/*home page */
+
+.home-page-signup{
+    background-color: #3c3c3c;
+    position: absolute;
+    padding-right: 0;
+    padding-left: 0;
+    width: 60%;
+    padding-top: 5%;
+    z-index: 500;
+    line-height: 5;
+    right: 0px;
+    border-top: 10px solid #19b9e7;
+    border-radius: 5%;
+}
+
+
+#featurette-about.featurette{
+    font-family: Myriad Pro;
+    font-size: 12px;
+    font-weight: normal;
+    padding-bottom: 30px;
+    text-align: left;
+}
+.intro-text .name {
+    font-size: 400%;
+
+    }
+.intro-text .skills {
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  border: none;
+  font-size:30px;
+  -webkit-text-stroke-width: 0.4px;
+  -webkit-text-stroke-color: black;
+  -webkit-transform: scaleY(1.0);
+}
+
+.lead {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.intro-header {
+    padding-top: 10%; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
+    text-align: center;
+    color: black;
+    background: url(../img/intro-bg.jpg) no-repeat center center;
+    background-size: cover;
+}
+
+.intro-message {
+    position: relative;
+    padding-top: 20%;
+    padding-bottom: 20%;
+}
+
+.intro-message > h1 {
+    margin: 0;
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+    font-size: 5em;
+}
+
+.intro-divider {
+    width: 400px;
+    border-top: 1px solid #f8f8f8;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+.intro-message > h3 {
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+}
+
+.network-name {
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
+.content-section-a {
+    padding: 50px 0;
+    background-color: #ffffff;
+    text-align: left;
+    color:black;
+}
+
+.content-section-b {
+    padding: 50px 0;
+    border-top: 1px solid #e7e7e7;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.section-heading {
+    margin-bottom: 30px;
+    color:black;
+    font-size:250%;
+    font-family: "Helvetica Neue",Helvetica,sans-serif!important;
+    font-weight: 400;
+
+
+}
+
+.section-introduction{
+  color:black;
+  line-height: 180%;
+  padding: 2%;
+}
+.section-heading-spacer {
+    float: left;
+    width: 50px;
+    border-top: 3px solid #111111;
+}
+
+
+/*banner*/
+
+.tow-truck-banner{
+  float:left;
+  width:100%;
+}
+
+img#towimage{
+
+}
+
+#bannersize{
+  padding:0%;
+}
+
+
+#banner-container,
+#banner-group{
+  display: inline-table;
+  float:left;
+}
+
+.banner-group { 
+  display: table; 
+}
+.banner-section { 
+    display: table-cell;
+    font-size: 27px;
+    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #ebebeb;
+}
+.banner-text { 
+  white-space: nowrap; 
+  width: 1%; 
+  padding: 0 5px; 
+}
+.banner-line { 
+    border-bottom: 2px solid #f8f8f8;
+    position: relative;
+    top: -0.8em;
+}
+#banner-text-b{
+  color:gray;
+
+}
+/*/banner*/
+/*socialicon*/
+
+.socialicon-container{
+    padding-top: 100px;
+}
+
+img.socialicons{
+    position: relative;
+    z-index: 5;
+    width: 30px;
+    border-radius: 50%;
+}
+/*/socialicon*/
+/*footer*/
+footer {
+    padding: 50px 0;
+    text-align: center;
+}
+
+p.copyright {
+    margin: 15px 0 0;
+}
+/*/footer*/
+/*media query*/
+
+@media (min-width: 1200px){
+.container {
+    width: 1200px;
+    }
+ul.banner-social-buttons {
+        float: left;
+        margin-top: 15px;
+    }
+}
+
+
+#banner-container,
+#banner-group{
+  display:inline-flex;
+  float:left;
+}
+
+.banner-group { 
+  display: table; 
+}
+.banner-section { 
+    display: table-cell;
+    font-size: 27px;
+    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #ebebeb;
+}
+.banner-text { 
+  white-space: nowrap; 
+  width: 1%; 
+  padding: 0 40px; 
+}
+.banner-line { 
+    border-bottom: 2px solid #f8f8f8;
+    position: relative;
+    top: -0.8em;
+}
+#banner-text-b{
+  color:gray;
+
+}
+
+/*/banner*/
+
+section {
+    padding: 75px 0;
+  }
+section.first {
+    padding-top: 75px;
+  }
+
+.navbar-right {
+    margin-right: 23px;
+  }
+
+.intro-text .skills {
+    font-size: 60px;
+  }
+.intro-message {
+    padding-bottom: 15%;
+  }
+
+.intro-message > h1 {
+    font-size: 3em;
+  }
+
+
+
+@media (max-width: 920px){
+.intro-header {
+    padding-top: 15%;
+  }
+.intro-text .name {
+    font-size: 250%;
+}
+.home-page-signup {
+  top: -150px;
+  width: 45%
+}
+
+@media (max-width: 780px){
+/*nav */
+/*  .container>.navbar-header {
+    float: left;
+  }
+  .navbar-custom {
+    padding: 5px 0;
+    -webkit-transition: padding 0.3s;
+    -moz-transition: padding 0.3s;
+    transition: padding 0.3s;
+  }
+  .navbar-custom .navbar-brand {
+    font-size: 2em;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+  }
+  .navbar-custom.affix {
+    padding: 10px 0;
+  }
+  .navbar-custom.affix .navbar-brand {
+    font-size: 1.5em;
+  }*/
+/*header*/
+.intro-header {
+    padding-top: 15%;
+  }
+.intro-text .name {
+    font-size: 250%;
+}
+.home-page-signup {
+  display:none;
+}
 }
