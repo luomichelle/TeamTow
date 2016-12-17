@@ -1,13 +1,18 @@
 body {
   /*padding: 50px;*/
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: #14751e;
+  background-color: white;
   
   background-repeat: no-repeat;
   background-size:cover;
   /*background-position: center center;*/
 
 }
+
+strong{
+  font-weight: 700;
+}
+
 .truckbtn {
   margin: 15px 5px 5px 10px;
 }
@@ -353,3 +358,302 @@ section.success {
 /*/navigator//
 
 
+/*home page */
+
+.home-page-signup{
+    background-color: #3c3c3c;
+    position: absolute;
+    padding-right: 0;
+    padding-left: 0;
+    width: 60%;
+    padding-top: 5%;
+    z-index: 500;
+    line-height: 5;
+    right: 0px;
+    border-top: 10px solid #19b9e7;
+    border-radius: 5%;
+}
+
+
+#featurette-about.featurette{
+    font-family: Myriad Pro;
+    font-size: 12px;
+    font-weight: normal;
+    padding-bottom: 30px;
+    text-align: left;
+}
+.intro-text .name {
+    font-size: 400%;
+
+    }
+.intro-text .skills {
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  border: none;
+  font-size:30px;
+  -webkit-text-stroke-width: 0.4px;
+  -webkit-text-stroke-color: black;
+  -webkit-transform: scaleY(1.0);
+}
+
+.lead {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.intro-header {
+    padding-top: 10%; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
+    text-align: center;
+    color: black;
+    background: url(../img/intro-bg.jpg) no-repeat center center;
+    background-size: cover;
+}
+
+.intro-message {
+    position: relative;
+    padding-top: 20%;
+    padding-bottom: 20%;
+}
+
+.intro-message > h1 {
+    margin: 0;
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+    font-size: 5em;
+}
+
+.intro-divider {
+    width: 400px;
+    border-top: 1px solid #f8f8f8;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+.intro-message > h3 {
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+}
+
+.network-name {
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
+.content-section-a {
+    padding: 50px 0;
+    background-color: #ffffff;
+    text-align: left;
+    color:black;
+}
+
+.content-section-b {
+    padding: 50px 0;
+    border-top: 1px solid #e7e7e7;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.section-heading {
+    margin-bottom: 30px;
+    color:black;
+    font-size:250%;
+    font-family: "Helvetica Neue",Helvetica,sans-serif!important;
+    font-weight: 400;
+
+
+}
+
+.section-introduction{
+  color:black;
+  line-height: 180%;
+  padding: 2%;
+}
+.section-heading-spacer {
+    float: left;
+    width: 50px;
+    border-top: 3px solid #111111;
+}
+
+
+/*banner*/
+
+.tow-truck-banner{
+  float:left;
+  width:100%;
+}
+
+img#towimage{
+
+}
+
+#bannersize{
+  padding:0%;
+}
+
+
+#banner-container,
+#banner-group{
+  display: inline-table;
+  float:left;
+}
+
+.banner-group { 
+  display: table; 
+}
+.banner-section { 
+    display: table-cell;
+    font-size: 27px;
+    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #ebebeb;
+}
+.banner-text { 
+  white-space: nowrap; 
+  width: 1%; 
+  padding: 0 5px; 
+}
+.banner-line { 
+    border-bottom: 2px solid #f8f8f8;
+    position: relative;
+    top: -0.8em;
+}
+#banner-text-b{
+  color:gray;
+
+}
+/*/banner*/
+/*socialicon*/
+
+.socialicon-container{
+    padding-top: 100px;
+}
+
+img.socialicons{
+    position: relative;
+    z-index: 5;
+    width: 30px;
+    border-radius: 50%;
+}
+/*/socialicon*/
+/*footer*/
+footer {
+    padding: 50px 0;
+    text-align: center;
+}
+
+p.copyright {
+    margin: 15px 0 0;
+}
+/*/footer*/
+/*media query*/
+
+@media (min-width: 1200px){
+.container {
+    width: 1200px;
+    }
+ul.banner-social-buttons {
+        float: left;
+        margin-top: 15px;
+    }
+}
+
+
+#banner-container,
+#banner-group{
+  display:inline-flex;
+  float:left;
+}
+
+.banner-group { 
+  display: table; 
+}
+.banner-section { 
+    display: table-cell;
+    font-size: 27px;
+    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #ebebeb;
+}
+.banner-text { 
+  white-space: nowrap; 
+  width: 1%; 
+  padding: 0 40px; 
+}
+.banner-line { 
+    border-bottom: 2px solid #f8f8f8;
+    position: relative;
+    top: -0.8em;
+}
+#banner-text-b{
+  color:gray;
+
+}
+
+/*/banner*/
+
+section {
+    padding: 75px 0;
+  }
+section.first {
+    padding-top: 75px;
+  }
+
+.navbar-right {
+    margin-right: 23px;
+  }
+
+.intro-text .skills {
+    font-size: 60px;
+  }
+.intro-message {
+    padding-bottom: 15%;
+  }
+
+.intro-message > h1 {
+    font-size: 3em;
+  }
+
+
+
+@media (max-width: 920px){
+.intro-header {
+    padding-top: 15%;
+  }
+.intro-text .name {
+    font-size: 250%;
+}
+.home-page-signup {
+  top: -150px;
+  width: 45%
+}
+
+@media (max-width: 780px){
+/*nav */
+/*  .container>.navbar-header {
+    float: left;
+  }
+  .navbar-custom {
+    padding: 5px 0;
+    -webkit-transition: padding 0.3s;
+    -moz-transition: padding 0.3s;
+    transition: padding 0.3s;
+  }
+  .navbar-custom .navbar-brand {
+    font-size: 2em;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+  }
+  .navbar-custom.affix {
+    padding: 10px 0;
+  }
+  .navbar-custom.affix .navbar-brand {
+    font-size: 1.5em;
+  }*/
+/*header*/
+.intro-header {
+    padding-top: 15%;
+  }
+.intro-text .name {
+    font-size: 250%;
+}
+.home-page-signup {
+  display:none;
+}
+}

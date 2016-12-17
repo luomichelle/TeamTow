@@ -1,91 +1,130 @@
-<!-- Top content -->
-<div class="top-content">
-  <div class="inner-bg">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-5">
-          <div class="form-box">
-            <div class="form-top">
-              <div class="form-top-left">
-                <h3>Login to our site</h3>
-                <p>Enter username and password to log on:</p>
-              </div>
-              <div class="form-top-right">
-              <i class="fa fa-lock"></i>
-              </div>
-            </div>
-            <div class="form-bottom">
-              <form role="form" action="/trucks/sign-in" method="POST" class="login-form">
-                <div class="form-group">
-                  <label class="sr-only" for="email">email</label>
-                  <input type="text" name="email" placeholder="Email..." class="form-username form-control" id="form-username">
+    <div class="intro-header">
+        <div class="container">
+            <div class="col-md-6">
+            <!-- First Featurette -->
+                <div class="featurette" id="featurette-about">
+                    <div class="intro-text">
+                        <span class="name">Long way to go <br>
+                        <strong>Short time to get there</strong>
+                        <br>
+                         Always on, always available
+                        </span>
+
+                            <br>
+                    </div>
                 </div>
-                <div class="form-group">
-                  <label class="sr-only" for="password">Password</label>
-                  <input type="password" name="password" placeholder="Password..." class="form-password form-control" id="form-password">
-                </div>
-                <button type="submit" class="btn">Sign in!</button>
-              </form>
             </div>
-          </div>
-          
-          <div class="social-login">
-            <h3>...or login with:</h3>
-            <div class="social-login-buttons">
-              <a class="btn btn-link-2" href="#">
-              <i class="fa fa-facebook"></i> Facebook
-              </a>
-              <a class="btn btn-link-2" href="#">
-              <i class="fa fa-twitter"></i> Twitter
-              </a>
-              <a class="btn btn-link-2" href="#">
-              <i class="fa fa-google-plus"></i> Google Plus
-              </a>
+            <div class="col-md-6">
+                <div class="home-page-signup">
+                            <form role="form" action="/users/sign-up" method="POST" className="registration-form">
+                                <div className="form-group">
+                                        <input type="text" name="username" placeholder="Username..." className="form-email form-control" id="form-username" />
+                                </div>
+                                <div className="form-group">
+                                    <input type="text" name="firstName" placeholder="First Name..." className="form-email form-control" id="form-firstName" />
+                                </div>
+                                <div className="form-group">
+
+                                    <input type="text" name="lastName" placeholder="Last Name..." className="form-email form-control" id="form-lastName" />
+                                </div>
+                                <div className="form-group">
+
+                                    <input type="text" name="email" placeholder="Email..." className="form-email form-control" id="form-email" />
+                                </div>
+                                <div className="form-group">
+                                    <input type="password" name="password" placeholder="Password..." className="form-password form-control" id="form-password" />
+                                </div>
+                                <div class="form-group">
+                                     <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+                                </div>
+
+                                <h4>or <a href="#">sign up</a> with your driver's account.</h4>
+                             </form>
+                    </div>
             </div>
-          </div>
         </div>
-        <div class="col-sm-1 middle-border"></div>
-        <div class="col-sm-1"></div>
-        <div class="col-sm-5">
-          <div class="form-box">
-            <div class="form-top">
-              <div class="form-top-left">
-                <h3>Sign up now</h3>
-                <p>Fill in the form below to get instant access:</p>
-              </div>
-              <div class="form-top-right">
-                <i class="fa fa-pencil"></i>
-              </div>
+    </div> 
+<!-- First Banner -->
+    <div class="col-lg-12" id="bannersize">
+        <div class="tow-truck-banner">
+            <img id="towimage" src="/assets/img/tow-truck-banner1.jpg" alt="Banner Image"/>
             </div>
-            <div class="form-bottom">
-              <form role="form" action="/trucks/sign-up" method="POST" class="registration-form">
-                <div class="form-group">
-                  <label class="sr-only" for="username">Username</label>
-                  <input type="text" name="username" placeholder="Username..." class="form-email form-control" id="form-username">
-                </div>
-                <div class="form-group">
-                  <label class="sr-only" for="firstName">FirstName</label>
-                  <input type="text" name="firstName" placeholder="First Name..." class="form-email form-control" id="form-firstName">
-                </div>
-                <div class="form-group">
-                  <label class="sr-only" for="lastName">lastName</label>
-                  <input type="text" name="lastName" placeholder="Last Name..." class="form-email form-control" id="form-lastName">
-                </div>
-                <div class="form-group">
-                  <label class="sr-only" for="email">Email</label>
-                  <input type="text" name="email" placeholder="Email..." class="form-email form-control" id="form-email">
-                </div>
-                <div class="form-group">
-                  <label class="sr-only" for="password">Password</label>
-                  <input type="password" name="password" placeholder="Password..." class="form-password form-control" id="form-password">
-                </div>
-                <button type="submit" class="btn">Sign me up!</button>
-              </form>
-            </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
-</div>
-<!-- Footer -->
+<!-- Introduction -->
+    <div class="content-section-a">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <hr class="section-heading-spacer"></hr>
+                    <div class="clearfix"></div>
+                    <div class="section-heading">
+                    <strong>w</strong>ho are we
+                    </div>
+                    <div class="section-introduction">
+                    Car broken down?
+                    <br>
+                    Our app lets you locate a tow truck at the touch of a button.
+                    <br>
+
+                    You and the tow truck can see each other's position on the map. 
+                    <br>
+                    No need to give directions.
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <hr class="section-heading-spacer"></hr>
+                    <div class="clearfix"></div>
+                    <div class="section-heading">
+                    <strong>h</strong>ow it works
+                    </div>
+                    <div class="section-introduction">
+                    Tap a button to see nearby tow trucks.
+                    <br>
+                    Choose the one you want.
+                    <br>
+                    When a tow truck responds to your request, you can see your driver's photo and details.
+                    <br>
+                    Track your driver's arrival on the map.
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <hr class="section-heading-spacer"></hr>
+                    <div class="clearfix"></div>
+                    <div class="section-heading">
+                    <strong>f</strong>rontend 
+                    </div>
+                    <div class="section-introduction">
+                        <ul>
+                            <li>REACT.JS</li>
+                            <li>HTML/CSS</li>
+                            <li>Bootstrap</li>
+                            <li>Javascript</li>
+                            <li>AJAX</li>
+                            <li>RESTFUL API</li>
+                            <li>Mapbox API</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <hr class="section-heading-spacer"></hr>
+                    <div class="clearfix"></div>
+                    <div class="section-heading">
+                    <strong>b</strong>ackend
+                    </div>
+                    <div class="section-introduction">
+                        <ul>
+                            <li>Node.JS</li>
+                            <li>Express.JS</li>
+                            <li>MVC pattern</li>
+                            <li>MongoDB</li>
+                            <li>User Authorization</li>
+                            <li>Bcrypt.JS</li>
+                            <li>Handlebars</li>
+                            <li>Mapbox API</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
