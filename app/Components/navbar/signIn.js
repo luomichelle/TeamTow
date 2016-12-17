@@ -7,13 +7,15 @@ var SignIn = React.createClass({
 	},
 	render: function() {
 		return (
-			<form>
-				<label>
-					Name:
-					<input type="text" name="name" />
-				</label>
-				<input type="submit" value="Submit" />
-			</form>
+			<div>
+				<form>
+					<label>
+						Name:
+						<input type="text" name="name" />
+					</label>
+					<input type="submit" value="Submit" />
+				</form>
+			</div>
 		);
 	}
 });
