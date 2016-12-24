@@ -1,7 +1,4 @@
-use command 'webpack -w' if you have updated anything in HTML/CSS.
-mongoimport --db teamtow --collection trucks --drop --file ./trucks.json
-
-
+use command 'webpack -w' for updating
 
 ### How to install:
 
@@ -15,7 +12,7 @@ mongoimport --db teamtow --collection trucks --drop --file ./trucks.json
 
 ### How to run: 
 
-- run `node app.js`
+- run 'npm start'
 - Open a demo client page by going to http://localhost:3000
 
 
