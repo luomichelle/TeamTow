@@ -1,7 +1,7 @@
 body {
   /*padding: 50px;*/
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: #5a5255;
+  background-color:   #F5F5F5;
   
   background-repeat: no-repeat;
   background-size:cover;
@@ -212,9 +212,10 @@ a {
 .profile-content {
   margin-top: 30px;
   padding: 20px;
-  background: #fff;
+  background: #337AB7;
   min-height: 460px;
-  box-shadow: 10px 5px 5px black;
+  box-shadow: 5px 2px 2px black;
+  border-radius: 15px;
 }
 .form-rows {
   padding: 0;
