@@ -1,7 +1,7 @@
 body {
   /*padding: 50px;*/
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: white;
+  background-color: #5a5255;
   
   background-repeat: no-repeat;
   background-size:cover;
@@ -214,6 +214,7 @@ a {
   padding: 20px;
   background: #fff;
   min-height: 460px;
+  box-shadow: 10px 5px 5px black;
 }
 .form-rows {
   padding: 0;
