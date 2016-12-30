@@ -3,10 +3,7 @@
 </div>
 <div class="container">
 	<div class="row profile">
-		<div class="col-xs-3">
-			{{> sidebar-trucks }}
-		</div>
-		<div class="col-xs-9">
+		<div class="col-xs-12">
 			<div class="profile-content" id="background">
 		        <div id="login_header">
 					{{#unless logged_in}}
@@ -17,17 +14,9 @@
 
 
 					<div class="panel panel-default">
-						<div class="raw">
-							<div style="float: right;clear:both;">
-								{{!--     <form role="form" action="/users/user-request" method="POST" class="user-request-form">
-								<button type="submit" class="btn" id="customerRequest">Call a truck</button>
-								</form> --}}
-									<h4> Your Requests</h4>
-								<div id="requests"></div>
-							</div>   
-		                    <div style="float: right;" class="panel-heading text-center">
-		                    	<h1 style="text-transform: capitalize;">Hello, {{username}}! </h1>							
-								<!-- <h3>Plaese check customers requests</h3>	 -->					
+						<div class="raw">   
+		                    <div class="panel-heading text-center">
+		                    	<h1 style="text-transform: capitalize;">Hello, {{username}}! </h1>				
 								<h3 class="user-name" id='username'>{{username}}</h3>
 		                        
 		                    </div>
@@ -40,6 +29,11 @@
 								<div id='errors'></div>
 								  <div id='routes'></div>
 								  <div id='instructions'></div>
+
+								 <div style="clear:both;">
+									<h4> Your Requests</h4>
+									<div id="requests"></div>
+								</div>
 						</div>	
 						                 
 								
@@ -107,21 +101,6 @@
 						// create the initial directions object, from which the layer
 						// and inputs will pull data.
 						var directions = L.mapbox.directions();
-
-						var directionsLayer = L.mapbox.directions.layer(directions)
-						    .addTo(map);
-
-						var directionsInputControl = L.mapbox.directions.inputControl('inputs', directions)
-						    .addTo(map);
-
-						var directionsErrorsControl = L.mapbox.directions.errorsControl('errors', directions)
-						    .addTo(map);
-
-						var directionsRoutesControl = L.mapbox.directions.routesControl('routes', directions)
-						    .addTo(map);
-
-						var directionsInstructionsControl = L.mapbox.directions.instructionsControl('instructions', directions)
-						    .addTo(map);
 
 						// If the user chooses not to allow their location
 						// to be shared, display an error message.
