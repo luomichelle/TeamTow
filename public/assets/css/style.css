@@ -607,7 +607,19 @@ ul.banner-social-buttons {
   color:gray;
 
 }
+#requests{
+  width:100%;
+  height:100%;
+  overflow: scroll;
+}
 
+#requestUser{
+  width:100%;
+  border-radius: 50px;
+  border-color:  #4CAF50;
+  margin-bottom: 15px;
+  background-color: #4CAF50;
+}
 /*/banner*/
 
 section {
@@ -651,6 +663,9 @@ section.first {
   width: 45%
 }
 
+
+
+
 @media (max-width: 780px){
 /*nav */
 /*  .container>.navbar-header {
@@ -684,3 +699,5 @@ section.first {
 .home-page-signup {
   display:none;
 }
+
+

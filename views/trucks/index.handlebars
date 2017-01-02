@@ -25,15 +25,12 @@
 	                    <div class="panel-body">
 	                    	
 		                    	<div id="map" style="width: 100%;height: 500px;"></div>
-		                    	<div id='inputs'></div>
-								<div id='errors'></div>
-								  <div id='routes'></div>
-								  <div id='instructions'></div>
-
-								 <div style="clear:both;">
-									<h4> Your Requests</h4>
-									<div id="requests"></div>
-								</div>
+								 
+									<h3> Tow Service Requests</h3>
+									<div id="requests">
+										<h4> Loading Requests... </h4>
+									</div>
+							
 						</div>	
 						                 
 								
@@ -114,7 +111,7 @@
 							//console.log(data)
 								$('#requests').empty();
 							for(i=0;i<data.length;i++){
-								$('#requests').append('<li>' +'<button id="requestUser" value =' + JSON.stringify(data[i]) + '>' + data[i].username + " "+ "Resolved:"+ +data[i].resolved + "  "+"Driver ID:"+ data[i].driverid +'</button>' + '</li>')
+								$('#requests').append('<button id="requestUser" value =' + JSON.stringify(data[i]) + '>' + data[i].username + " "+ "Resolved:"+ +data[i].resolved + "  "+"Driver ID:"+ data[i].driverid +'</button>' + '</br>')
 							};
 						})
 						}
