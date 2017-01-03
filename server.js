@@ -8,7 +8,7 @@ var cookieParser = require('cookie-parser'); // for working with cookies
 var bodyParser = require('body-parser');
 var session = require('express-session'); 
 var methodOverride = require('method-override'); // for deletes in express
-
+var mongoose = require('mongoose');
 // Express settings
 // ================
 
