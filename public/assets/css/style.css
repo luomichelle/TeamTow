@@ -620,6 +620,11 @@ ul.banner-social-buttons {
   margin-bottom: 15px;
   background-color: #4CAF50;
 }
+.callATruckText{
+  font-family:"Impact," "Charcoal", "sans-serif";
+  font-size: 50px;
+}
+
 /*/banner*/
 
 section {
